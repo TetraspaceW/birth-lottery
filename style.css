@@ -1,0 +1,43 @@
+body {
+    background-color: LavenderBlush;
+    color: DarkMagenta;
+    font-size: larger;
+    font-family: "Noto Sans", sans-serif;
+}
+
+.container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.result {
+    margin: 20px 0;
+    padding: 10px;
+    min-height: 40px;
+    text-align: center;
+}
+
+.settings-section {
+    margin: 10px 0;
+}
+
+details {
+    margin: 10px 0;
+}
+
+details summary {
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+details div {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.weight-group label {
+    display: block;
+    margin: 5px 0;
+}

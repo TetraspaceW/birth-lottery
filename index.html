@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moral Circle Reincarnation Simulator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>The Wheel of Reincarnation!</h1>
+      <p>
+        You didn't choose the circumstances of your birth; even if it couldn't
+        have been any other way, it was something outside of your control. I
+        expect most of the people who are reading this to be a in a rare
+        situation, on Earth: wealthy, educated, and all for reasons that are, in
+        part, outside of their control. And, so, it's meaningful to say that
+        there's an element of chance to where you ended up; probability is not
+        ontologically fundamental, it's how you quantify what is uncertain and
+        what is outside your control. How else could those elements of chance
+        have went?
+      </p>
+
+      <button id="reincarnateBtn" class="reincarnate-btn">Reincarnate</button>
+
+      <div id="result" class="result"></div>
+
+      <!-- Settings Section -->
+      <div class="settings-section">
+        <details>
+          <summary>Categories</summary>
+          <div id="categories">
+            <label class="checkbox-label">
+              <input type="checkbox" id="includeHumans" checked />
+              <span>Include humans</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="includeFarmedAnimals" checked />
+              <span>Include farmed animals</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="includeWildAnimals" checked />
+              <span>Include wild animals</span>
+            </label>
+          </div>
+        </details>
+      </div>
+
+      <!-- Moral Weights Section -->
+      <div class="settings-section">
+        <details>
+          <summary>Moral Weights</summary>
+          <div id="weights">
+            <div class="weight-controls">
+              <div class="weight-group" id="weightInputs">
+                <!-- Weight inputs will be populated by JavaScript -->
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
