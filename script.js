@@ -1,15 +1,20 @@
 // Species configuration with default moral weights
 const speciesConfig = {
-    human: { name: "Human", defaultWeight: 1 },
-    chicken: { name: "Chicken", defaultWeight: 0.5 },
-    pig: { name: "Pig", defaultWeight: 0.7 },
-    cow: { name: "Cow", defaultWeight: 0.8 },
-    cat: { name: "Cat", defaultWeight: 0.4 },
-    dog: { name: "Dog", defaultWeight: 0.6 },
-    "wild-bird": { name: "Other birds", defaultWeight: 0.2 },
-    "wild-mammal": { name: "Other mammals", defaultWeight: 0.3 },
-    "wild-fish": { name: "Fish", defaultWeight: 0.2 },
-    "wild-insect": { name: "Insects", defaultWeight: 0.1 },
+    human: { name: "Humans", defaultWeight: 1 },
+    cat: { name: "Cats", defaultWeight: 0.5 },
+    dog: { name: "Dogs", defaultWeight: 0.5 },
+    pig: { name: "Pigs", defaultWeight: 0.515 },
+    buffalo: { name: "Buffalo", defaultWeight: 0.5 },
+    cow: { name: "Cows", defaultWeight: 0.5 },
+    sheep: { name: "Sheep", defaultWeight: 0.5 },
+    goat: { name: "Goats", defaultWeight: 0.5 },
+    rabbit: { name: "Rabbits", defaultWeight: 0.5 },
+    goose: { name: "Geese", defaultWeight: 0.3 },
+    duck: { name: "Ducks", defaultWeight: 0.3 },
+    turkey: { name: "Turkeys", defaultWeight: 0.3 },
+    chicken: { name: "Chickens", defaultWeight: 0.332 },
+    "other-bird": { name: "Other birds", defaultWeight: 0.3 },
+    fish: { name: "Fish", defaultWeight: 0.05 },
 };
 
 // Population data (approximate values)
@@ -254,18 +259,24 @@ const humanPopulationData = {
 
 const animalPopulationData = {
     // Farmed animals (annual population)
-    chicken: { population: 74_000_000_000, category: "farmed", name: "🐔 Farmed chicken" },
-    pig: { population: 1_500_000_000, category: "farmed", name: "🐖 Farmed pig" },
-    cow: { population: 1_500_000_000, category: "farmed", name: "🐄 Farmed cow" },
-    fish: { population: 77e9, category: "farmed", name: "🐟 Farmed fish" },
-    dog: { population: 471e6, category: "farmed", name: "🐕‍🦺 Pet dog" },
-    cat: { population: 373e6, category: "farmed", name: "🐈 Pet cat" },
+    fish: { population: 77e9, category: "farmed", name: "🐟 Farmed fish", moralWeightKey: "fish" },
+    dog: { population: 471e6, category: "farmed", name: "🐕‍🦺 Pet dog", moralWeightKey: "dog" },
+    cat: { population: 373e6, category: "farmed", name: "🐈 Pet cat", moralWeightKey: "cat" },
+    hen: { population: 6.5e9, category: "farmed", name: "🐔🥚 Farmed egg-laying chicken", moralWeightKey: "chicken" },
+    broiler: { population: 21.3e9, category: "farmed", name: "🐔 Farmed chicken", moralWeightKey: "chicken" },
+    cow: { population: 1.47e9, category: "farmed", name: "🐄 Farmed cow", moralWeightKey: "cow" },
+    duck: { population: 1.24e9, category: "farmed", name: "🦆 Farmed duck", moralWeightKey: "duck" },
+    sheep: { population: 1.17e9, category: "farmed", name: "🐑 Farmed sheep", moralWeightKey: "sheep" },
+    goat: { population: 1.00e9, category: "farmed", name: "🐐 Farmed goat", moralWeightKey: "goat" },
+    pig: { population: 982e6, category: "farmed", name: "🐖 Farmed pig", moralWeightKey: "pig" },
+    turkey: { population: 469e6, category: "farmed", name: "🦃 Farmed turkey", moralWeightKey: "turkey" },
+    goose: { population: 381e6, category: "farmed", name: "🦢 Farmed goose", moralWeightKey: "goose" },
+    rabbit: { population: 317e6, category: "farmed", name: "🐰 Farmed rabbit", moralWeightKey: "rabbit" },
+    buffalo: { population: 199e6, category: "farmed", name: "🦬 Farmed buffalo", moralWeightKey: "buffalo" },
 
     // Wild animals (very rough estimates)
-    "wild-bird": { population: 1e11, category: "wild", name: "🐦 Wild bird" },
-    "wild-mammal": { population: 130_000_000_000, category: "wild", name: "🐀 Wild mammal" },
-    "wild-fish": { population: 1e15, category: "wild", name: "🐟 Wild fish" },
-    "wild-insect": { population: 10_000_000_000_000, category: "wild", name: "🐜 Wild insect" },
+    "wild-bird": { population: 1e11, category: "wild", name: "🐦 Wild bird", moralWeightKey: "other-bird" },
+    "wild-fish": { population: 1e15, category: "wild", name: "🐟 Wild fish", moralWeightKey: "fish" },
 };
 
 const populationData = {
@@ -306,11 +317,11 @@ function generateWeightInputs() {
             let newValue;
 
             if (direction === "up") {
-                // Multiply by 10, but cap at 1000 to prevent overflow
-                newValue = Math.min(currentValue * 10, 1000);
+                // Multiply by 10, but cap at 10 to prevent overflow
+                newValue = currentValue * 10
             } else {
                 // Divide by 10, but don't go below 0.001
-                newValue = Math.max(currentValue / 10, 0.001);
+                newValue = currentValue / 10
             }
 
             lastValue = newValue;
@@ -393,6 +404,8 @@ function calculateWeightedOptions() {
         let moralWeight;
         if (data.category === "human") {
             moralWeight = getMoralWeight("human");
+        } else if (data.moralWeightKey) {
+            moralWeight = getMoralWeight(data.moralWeightKey);
         } else {
             moralWeight = getMoralWeight(key);
         }
