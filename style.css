@@ -42,11 +42,26 @@ details div {
     margin: 5px 0;
 }
 
+.reincarnate-btn {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Category sections for moral weights */
 #weightInputs {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+}
+
+/* Preset buttons */
+.preset-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .weight-category {
