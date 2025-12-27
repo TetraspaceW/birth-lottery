@@ -18,8 +18,12 @@ const speciesConfig = {
     dog: { name: "Dogs", defaultWeight: 0.515, category: "mammals" },
     // Other
     fish: { name: "Fish", defaultWeight: 0.056, category: "other" },
-    insect: { name: "Insect", defaultWeight: 0.013, category: "other" },
-    shrimp: { name: "Shrimp", defaultWeight: 0.031, category: "other" }
+    mite: { name: "Mites", defaultWeight: 0.013, category: "other" },
+    springtail: { name: "Springtails", defaultWeight: 0.013, category: "other" },
+    ant: { name: "Ants", defaultWeight: 0.013, category: "other" },
+    termite: { name: "Termites", defaultWeight: 0.013, category: "other" },
+    insect: { name: "Other insects", defaultWeight: 0.013, category: "other" },
+    shrimp: { name: "Shrimps", defaultWeight: 0.031, category: "other" }
 };
 
 // Population data (approximate values)
@@ -263,31 +267,36 @@ const humanPopulationData = {
 };
 
 const animalPopulationData = {
-    // Farmed animals (annual population)
-    fish: { population: 77e9, category: "farmed", name: "🐟 Farmed fish", moralWeightKey: "fish" },
-    dog: { population: 471e6, category: "farmed", name: "🐕‍🦺 Pet dog", moralWeightKey: "dog" },
-    cat: { population: 373e6, category: "farmed", name: "🐈 Pet cat", moralWeightKey: "cat" },
-    hen: { population: 6.5e9, category: "farmed", name: "🐔🥚 Farmed egg-laying chicken", moralWeightKey: "chicken" },
-    broiler: { population: 21.3e9, category: "farmed", name: "🐔 Farmed chicken", moralWeightKey: "chicken" },
-    cow: { population: 1.47e9, category: "farmed", name: "🐄 Farmed cow", moralWeightKey: "cow" },
-    duck: { population: 1.24e9, category: "farmed", name: "🦆 Farmed duck", moralWeightKey: "duck" },
-    sheep: { population: 1.17e9, category: "farmed", name: "🐑 Farmed sheep", moralWeightKey: "sheep" },
-    goat: { population: 1.00e9, category: "farmed", name: "🐐 Farmed goat", moralWeightKey: "goat" },
-    pig: { population: 982e6, category: "farmed", name: "🐖 Farmed pig", moralWeightKey: "pig" },
-    turkey: { population: 469e6, category: "farmed", name: "🦃 Farmed turkey", moralWeightKey: "turkey" },
-    goose: { population: 381e6, category: "farmed", name: "🦢 Farmed goose", moralWeightKey: "goose" },
-    rabbit: { population: 317e6, category: "farmed", name: "🐰 Farmed rabbit", moralWeightKey: "rabbit" },
-    buffalo: { population: 199e6, category: "farmed", name: "🦬 Farmed buffalo", moralWeightKey: "buffalo" },
-    shrimp: { population: 230e9, category: "farmed", name: "🦐 Farmed shrimp", moralWeightKey: "shrimp" },
-    cricket: { population: 37.3e9, category: "farmed", name: "🦗 Farmed cricket", moralWeightKey: "insect" },
-    mealworm: { population: 27.8e9, category: "farmed", name: "🐛 Farmed mealworm", moralWeightKey: "insect" },
-    "soldier-fly": { population: 11.4e9, category: "farmed", name: "🪰 Farmed black soldier fly", moralWeightKey: "insect" },
-    "farmed-insect": { population: 8.485e9, category: "farmed", name: "🦗 Other farmed insect", moralWeightKey: "insect" },
+    // Farmed animals
+    fish: { population: 77e9, category: "domestic", name: "🐟 Farmed fish", moralWeightKey: "fish" },
+    dog: { population: 471e6, category: "domestic", name: "🐕‍🦺 Pet dog", moralWeightKey: "dog" },
+    cat: { population: 373e6, category: "domestic", name: "🐈 Pet cat", moralWeightKey: "cat" },
+    hen: { population: 6.5e9, category: "domestic", name: "🐔🥚 Farmed egg-laying chicken", moralWeightKey: "chicken" },
+    broiler: { population: 21.3e9, category: "domestic", name: "🐔 Farmed chicken", moralWeightKey: "chicken" },
+    cow: { population: 1.47e9, category: "domestic", name: "🐄 Farmed cow", moralWeightKey: "cow" },
+    duck: { population: 1.24e9, category: "domestic", name: "🦆 Farmed duck", moralWeightKey: "duck" },
+    sheep: { population: 1.17e9, category: "domestic", name: "🐑 Farmed sheep", moralWeightKey: "sheep" },
+    goat: { population: 1.00e9, category: "domestic", name: "🐐 Farmed goat", moralWeightKey: "goat" },
+    pig: { population: 982e6, category: "domestic", name: "🐖 Farmed pig", moralWeightKey: "pig" },
+    turkey: { population: 469e6, category: "domestic", name: "🦃 Farmed turkey", moralWeightKey: "turkey" },
+    goose: { population: 381e6, category: "domestic", name: "🦢 Farmed goose", moralWeightKey: "goose" },
+    rabbit: { population: 317e6, category: "domestic", name: "🐰 Farmed rabbit", moralWeightKey: "rabbit" },
+    buffalo: { population: 199e6, category: "domestic", name: "🦬 Farmed buffalo", moralWeightKey: "buffalo" },
+    shrimp: { population: 230e9, category: "domestic", name: "🦐 Farmed shrimp", moralWeightKey: "shrimp" },
+    cricket: { population: 37.3e9, category: "domestic", name: "🦗 Farmed cricket", moralWeightKey: "insect" },
+    mealworm: { population: 27.8e9, category: "domestic", name: "🐛 Farmed mealworm", moralWeightKey: "insect" },
+    "soldier-fly": { population: 11.4e9, category: "domestic", name: "🪰 Farmed black soldier fly", moralWeightKey: "insect" },
+    "farmed-insect": { population: 8.485e9, category: "domestic", name: "🦗 Other farmed insect", moralWeightKey: "insect" },
 
 
-    // Wild animals (very rough estimates)
+    // Wild animals
     "wild-bird": { population: 1e11, category: "wild", name: "🐦 Wild bird", moralWeightKey: "other-bird" },
     "wild-fish": { population: 1e15, category: "wild", name: "🐟 Wild fish", moralWeightKey: "fish" },
+    "wild-mite": { population: 1e18 * 0.95 * 2 / 3, category: "wild", name: "🕷️ Wild mite", moralWeightKey: "mite" },
+    "wild-springtail": { population: 1e18 * 0.95 * 1 / 3, category: "wild", name: "🪳 Wild springtail", moralWeightKey: "springtail" },
+    "wild-ant": { population: 1e18 * 0.05 * 1 / 3, category: "wild", name: "🐜 Wild ant", moralWeightKey: "ant" },
+    "wild-termite": { population: 1e18 * 0.05 * 1 / 3, category: "wild", name: "🐜 Wild termite", moralWeightKey: "termite" },
+    "wild-arthropod": { population: 1e18 * 0.05 * 1 / 3, category: "wild", name: "🕷️ Other wild arthropod", moralWeightKey: "insect" }
 };
 
 const populationData = {
@@ -424,7 +433,7 @@ function getMoralWeight(species) {
 function isIncluded(category) {
     if (category === "human")
         return document.getElementById("includeHumans").checked;
-    if (category === "farmed")
+    if (category === "domestic")
         return document.getElementById("includeFarmedAnimals").checked;
     if (category === "wild")
         return document.getElementById("includeWildAnimals").checked;
@@ -531,7 +540,12 @@ const moralWeightPresets = {
         cat: 1,
         dog: 1,
         fish: 1,
-        shrimp: 1
+        shrimp: 1,
+        mite: 1,
+        springtail: 1,
+        ant: 1,
+        termite: 1,
+        insect: 1
     },
     rethink: {
         human: 1,
@@ -549,26 +563,35 @@ const moralWeightPresets = {
         cat: 0.515,
         dog: 0.515,
         fish: 0.056,
-        shrimp: 0.031
+        shrimp: 0.031,
+        mite: 0.013,
+        springtail: 0.013,
+        ant: 0.013,
+        termite: 0.013,
+        insect: 0.013
     },
     neurons: {
-        human: 16.3e9,
-        chicken: 100e6,
-        duck: 250e6,
-        turkey: 100e6,
-        goose: 300e6,
-        "other-bird": 200e6,
-        pig: 425e6,
-        buffalo: 500e6,
-        cow: 500e6,
-        sheep: 300e6,
-        goat: 300e6,
-        rabbit: 70e6,
-        cat: 250e6,
-        dog: 500e6,
-        fish: 20e3,
-        shrimp: 20e3,
-        insect: 50e3
+        human: 16.3e3,
+        chicken: 100,
+        duck: 250,
+        turkey: 100,
+        goose: 300,
+        "other-bird": 226,
+        pig: 425,
+        buffalo: 500,
+        cow: 500,
+        sheep: 300,
+        goat: 300,
+        rabbit: 70,
+        cat: 250,
+        dog: 500,
+        fish: 1,
+        shrimp: 8.6e-3,
+        insect: 50e-3,
+        mite: 58e-6,
+        springtail: 58e-6,
+        ant: 25e-3,
+        termite: 10e-3,
     },
 };
 
