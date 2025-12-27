@@ -7,7 +7,7 @@ body {
 
 .container {
     padding: 20px;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -40,4 +40,51 @@ details div {
 .weight-group label {
     display: block;
     margin: 5px 0;
+}
+
+/* Category sections for moral weights */
+#weightInputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.weight-category {
+    flex: 1;
+    min-width: 200px;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.weight-category h4 {
+    margin: 0 0 10px 0;
+    font-size: 1.1em;
+    color: DarkMagenta;
+    border-bottom: 2px solid DarkMagenta;
+    padding-bottom: 5px;
+}
+
+.weight-category label {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+    font-weight: normal;
+}
+
+.weight-category input {
+    margin-left: 10px;
+    width: 80px;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+    #weightInputs {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .weight-category {
+        min-width: auto;
+    }
 }

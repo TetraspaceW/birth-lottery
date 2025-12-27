@@ -1,20 +1,23 @@
 // Species configuration with default moral weights
 const speciesConfig = {
-    human: { name: "Humans", defaultWeight: 1 },
-    cat: { name: "Cats", defaultWeight: 0.5 },
-    dog: { name: "Dogs", defaultWeight: 0.5 },
-    pig: { name: "Pigs", defaultWeight: 0.515 },
-    buffalo: { name: "Buffalo", defaultWeight: 0.5 },
-    cow: { name: "Cows", defaultWeight: 0.5 },
-    sheep: { name: "Sheep", defaultWeight: 0.5 },
-    goat: { name: "Goats", defaultWeight: 0.5 },
-    rabbit: { name: "Rabbits", defaultWeight: 0.5 },
-    goose: { name: "Geese", defaultWeight: 0.3 },
-    duck: { name: "Ducks", defaultWeight: 0.3 },
-    turkey: { name: "Turkeys", defaultWeight: 0.3 },
-    chicken: { name: "Chickens", defaultWeight: 0.332 },
-    "other-bird": { name: "Other birds", defaultWeight: 0.3 },
-    fish: { name: "Fish", defaultWeight: 0.05 },
+    human: { name: "Humans", defaultWeight: 1, category: "humans" },
+    // Birds
+    chicken: { name: "Chickens", defaultWeight: 0.332, category: "birds" },
+    duck: { name: "Ducks", defaultWeight: 0.3, category: "birds" },
+    turkey: { name: "Turkeys", defaultWeight: 0.3, category: "birds" },
+    goose: { name: "Geese", defaultWeight: 0.3, category: "birds" },
+    "other-bird": { name: "Other birds", defaultWeight: 0.3, category: "birds" },
+    // Mammals
+    pig: { name: "Pigs", defaultWeight: 0.515, category: "mammals" },
+    buffalo: { name: "Buffalo", defaultWeight: 0.5, category: "mammals" },
+    cow: { name: "Cows", defaultWeight: 0.5, category: "mammals" },
+    sheep: { name: "Sheep", defaultWeight: 0.5, category: "mammals" },
+    goat: { name: "Goats", defaultWeight: 0.5, category: "mammals" },
+    rabbit: { name: "Rabbits", defaultWeight: 0.5, category: "mammals" },
+    cat: { name: "Cats", defaultWeight: 0.5, category: "mammals" },
+    dog: { name: "Dogs", defaultWeight: 0.5, category: "mammals" },
+    // Other
+    fish: { name: "Fish", defaultWeight: 0.05, category: "other" },
 };
 
 // Population data (approximate values)
@@ -297,83 +300,111 @@ document.addEventListener("DOMContentLoaded", function () {
 function generateWeightInputs() {
     const weightInputsContainer = document.getElementById("weightInputs");
 
+    // Group species by category
+    const categories = {
+        humans: [],
+        birds: [],
+        mammals: [],
+        other: []
+    };
+
     for (const [key, config] of Object.entries(speciesConfig)) {
-        const label = document.createElement("label");
-        label.textContent = `${config.name}: `;
+        categories[config.category].push({ key, config });
+    }
 
-        const input = document.createElement("input");
-        input.type = "number";
-        input.id = `weight-${key}`;
-        input.value = config.defaultWeight;
-        input.min = "0";
-        input.step = "0.1";
+    // Create sections for each category
+    for (const [categoryName, species] of Object.entries(categories)) {
+        if (species.length === 0) continue;
 
-        // Store the original value to detect changes
-        let lastValue = config.defaultWeight;
+        // Create category section
+        const categoryDiv = document.createElement("div");
+        categoryDiv.className = "weight-category";
 
-        // Function to apply logarithmic scaling
-        const applyLogScale = (direction) => {
-            const currentValue = parseFloat(input.value) || 0;
-            let newValue;
+        const categoryTitle = document.createElement("h4");
+        categoryTitle.textContent = categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
+        categoryDiv.appendChild(categoryTitle);
 
-            if (direction === "up") {
-                // Multiply by 10, but cap at 10 to prevent overflow
-                newValue = currentValue * 10
-            } else {
-                // Divide by 10, but don't go below 0.001
-                newValue = currentValue / 10
-            }
+        // Add species inputs for this category
+        for (const { key, config } of species) {
+            const label = document.createElement("label");
+            label.textContent = `${config.name}: `;
 
-            lastValue = newValue;
-            input.value = newValue;
-        };
+            const input = document.createElement("input");
+            input.type = "number";
+            input.id = `weight-${key}`;
+            input.value = config.defaultWeight;
+            input.min = "0";
+            input.step = "0.1";
 
-        // Handle arrow keys
-        input.addEventListener("keydown", function (e) {
-            if (e.key === "ArrowUp" || e.key === "ArrowDown") {
-                e.preventDefault();
-                applyLogScale(e.key === "ArrowUp" ? "up" : "down");
-            }
-        });
+            // Store the original value to detect changes
+            let lastValue = config.defaultWeight;
 
-        // Handle wheel events (scrolling on the input)
-        input.addEventListener("wheel", function (e) {
-            e.preventDefault();
-            applyLogScale(e.deltaY < 0 ? "up" : "down");
-        });
+            // Function to apply logarithmic scaling
+            const applyLogScale = (direction) => {
+                const currentValue = parseFloat(input.value) || 0;
+                let newValue;
 
-        // Handle click events on spinner buttons and prevent default behavior
-        // We need to intercept before the default step is applied
-        input.addEventListener("mousedown", function (e) {
-            // Check if click is on spinner buttons (right side of input)
-            const rect = this.getBoundingClientRect();
-            const spinnerWidth = rect.height; // Approximate spinner button width
-            const clickX = e.clientX - rect.left;
-            const isSpinnerArea = clickX > rect.width - spinnerWidth;
-
-            if (isSpinnerArea) {
-                e.preventDefault();
-                // Determine which button based on vertical position within spinner
-                const clickY = e.clientY - rect.top;
-                const isUpperHalf = clickY < rect.height / 2;
-
-                if (isUpperHalf) {
-                    applyLogScale("up");
+                if (direction === "up") {
+                    // Multiply by 10, but cap at 10 to prevent overflow
+                    newValue = currentValue * 10
                 } else {
-                    applyLogScale("down");
+                    // Divide by 10, but don't go below 0.001
+                    newValue = currentValue / 10
                 }
-            }
-        });
 
-        // Handle change event for manual typing
-        input.addEventListener("change", function (e) {
-            // Only update lastValue, don't apply log scale
-            const currentValue = parseFloat(this.value) || 0;
-            lastValue = currentValue;
-        });
+                lastValue = newValue;
+                input.value = newValue;
+            };
 
-        label.appendChild(input);
-        weightInputsContainer.appendChild(label);
+            // Handle arrow keys
+            input.addEventListener("keydown", function (e) {
+                if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                    e.preventDefault();
+                    applyLogScale(e.key === "ArrowUp" ? "up" : "down");
+                }
+            });
+
+            // Handle wheel events (scrolling on the input)
+            input.addEventListener("wheel", function (e) {
+                e.preventDefault();
+                applyLogScale(e.deltaY < 0 ? "up" : "down");
+            });
+
+            // Handle click events on spinner buttons and prevent default behavior
+            // We need to intercept before the default step is applied
+            input.addEventListener("mousedown", function (e) {
+                // Check if click is on spinner buttons (right side of input)
+                const rect = this.getBoundingClientRect();
+                const spinnerWidth = rect.height; // Approximate spinner button width
+                const clickX = e.clientX - rect.left;
+                const isSpinnerArea = clickX > rect.width - spinnerWidth;
+
+                if (isSpinnerArea) {
+                    e.preventDefault();
+                    // Determine which button based on vertical position within spinner
+                    const clickY = e.clientY - rect.top;
+                    const isUpperHalf = clickY < rect.height / 2;
+
+                    if (isUpperHalf) {
+                        applyLogScale("up");
+                    } else {
+                        applyLogScale("down");
+                    }
+                }
+            });
+
+            // Handle change event for manual typing
+            input.addEventListener("change", function (e) {
+                // Only update lastValue, don't apply log scale
+                const currentValue = parseFloat(this.value) || 0;
+                lastValue = currentValue;
+            });
+
+            label.appendChild(input);
+            categoryDiv.appendChild(label);
+        }
+
+        weightInputsContainer.appendChild(categoryDiv);
     }
 }
 
