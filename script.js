@@ -297,6 +297,70 @@ function generateWeightInputs() {
         input.min = "0";
         input.step = "0.1";
 
+        // Store the original value to detect changes
+        let lastValue = config.defaultWeight;
+
+        // Function to apply logarithmic scaling
+        const applyLogScale = (direction) => {
+            const currentValue = parseFloat(input.value) || 0;
+            let newValue;
+
+            if (direction === "up") {
+                // Multiply by 10, but cap at 1000 to prevent overflow
+                newValue = Math.min(currentValue * 10, 1000);
+            } else {
+                // Divide by 10, but don't go below 0.001
+                newValue = Math.max(currentValue / 10, 0.001);
+            }
+
+            lastValue = newValue;
+            input.value = newValue;
+        };
+
+        // Handle arrow keys
+        input.addEventListener("keydown", function (e) {
+            if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                e.preventDefault();
+                applyLogScale(e.key === "ArrowUp" ? "up" : "down");
+            }
+        });
+
+        // Handle wheel events (scrolling on the input)
+        input.addEventListener("wheel", function (e) {
+            e.preventDefault();
+            applyLogScale(e.deltaY < 0 ? "up" : "down");
+        });
+
+        // Handle click events on spinner buttons and prevent default behavior
+        // We need to intercept before the default step is applied
+        input.addEventListener("mousedown", function (e) {
+            // Check if click is on spinner buttons (right side of input)
+            const rect = this.getBoundingClientRect();
+            const spinnerWidth = rect.height; // Approximate spinner button width
+            const clickX = e.clientX - rect.left;
+            const isSpinnerArea = clickX > rect.width - spinnerWidth;
+
+            if (isSpinnerArea) {
+                e.preventDefault();
+                // Determine which button based on vertical position within spinner
+                const clickY = e.clientY - rect.top;
+                const isUpperHalf = clickY < rect.height / 2;
+
+                if (isUpperHalf) {
+                    applyLogScale("up");
+                } else {
+                    applyLogScale("down");
+                }
+            }
+        });
+
+        // Handle change event for manual typing
+        input.addEventListener("change", function (e) {
+            // Only update lastValue, don't apply log scale
+            const currentValue = parseFloat(this.value) || 0;
+            lastValue = currentValue;
+        });
+
         label.appendChild(input);
         weightInputsContainer.appendChild(label);
     }
