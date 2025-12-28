@@ -109,3 +109,8 @@ details div {
         min-width: auto;
     }
 }
+
+summary h2 {
+    display: inline;
+    margin: 0;
+}
