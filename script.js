@@ -417,10 +417,8 @@ function generateWeightInputs() {
                 let newValue;
 
                 if (direction === "up") {
-                    // Multiply by 10, but cap at 10 to prevent overflow
                     newValue = currentValue * 10
                 } else {
-                    // Divide by 10, but don't go below 0.001
                     newValue = currentValue / 10
                 }
 
@@ -442,32 +440,8 @@ function generateWeightInputs() {
                 applyLogScale(e.deltaY < 0 ? "up" : "down");
             });
 
-            // Handle click events on spinner buttons and prevent default behavior
-            // We need to intercept before the default step is applied
-            input.addEventListener("mousedown", function (e) {
-                // Check if click is on spinner buttons (right side of input)
-                const rect = this.getBoundingClientRect();
-                const spinnerWidth = rect.height; // Approximate spinner button width
-                const clickX = e.clientX - rect.left;
-                const isSpinnerArea = clickX > rect.width - spinnerWidth;
-
-                if (isSpinnerArea) {
-                    e.preventDefault();
-                    // Determine which button based on vertical position within spinner
-                    const clickY = e.clientY - rect.top;
-                    const isUpperHalf = clickY < rect.height / 2;
-
-                    if (isUpperHalf) {
-                        applyLogScale("up");
-                    } else {
-                        applyLogScale("down");
-                    }
-                }
-            });
-
             // Handle change event for manual typing
             input.addEventListener("change", function (e) {
-                // Only update lastValue, don't apply log scale
                 const currentValue = parseFloat(this.value) || 0;
                 lastValue = currentValue;
             });
