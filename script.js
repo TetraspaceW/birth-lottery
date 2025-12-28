@@ -33,6 +33,7 @@ const speciesConfig = {
 // Population data (approximate values)
 const humanPopulationData = {
     // Humans (2025 estimates)
+    you: { population: 1, category: "human", name: "👤 You" },
     india: { population: 1417492000, category: "human", name: "🇮🇳 Human from India" },
     china: { population: 1408280000, category: "human", name: "🇨🇳 Human from China" },
     "united-states": { population: 340110987, category: "human", name: "🇺🇸 Human from the United States" },
@@ -526,6 +527,10 @@ function reincarnate() {
 
         showResult(`${result.name}`);
     }
+
+    // Change button text to "Draw again" after first click
+    const reincarnateBtn = document.getElementById("reincarnateBtn");
+    reincarnateBtn.textContent = "Draw again";
 }
 
 function showResult(text) {
