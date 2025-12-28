@@ -311,8 +311,9 @@ const animalPopulationData = {
     "wild-ant": { population: 1e18 * 0.05 * 1 / 3, category: "wild", name: "🐜 Wild ant", moralWeightKey: "ant" },
     "wild-termite": { population: 1e18 * 0.05 * 1 / 3, category: "wild", name: "🐜 Wild termite", moralWeightKey: "termite" },
     "wild-arthropod": { population: 1e18 * 0.05 * 1 / 3, category: "wild", name: "🕷️ Other wild arthropod", moralWeightKey: "insect" },
-    "wild-marine-arthropod": { population: 1e20, category: "wild", name: "🦐 Other marine arthropod", moralWeightKey: "copepod" },
-    "wild-pteropod": { population: 5e17, category: "wild", name: "🐌 Wild mollusc", moralWeightKey: "pteropod" }
+    "wild-shrimp": { population: 3.1e13, category: "wild", name: "🦐 Wild shrimp", moralWeightKey: "shrimp" },
+    "wild-marine-arthropod": { population: 1e20, category: "wild", name: "🦐 Wild copepod", moralWeightKey: "copepod" },
+    "wild-pteropod": { population: 5e17, category: "wild", name: "🐌 Wild pteropod", moralWeightKey: "pteropod" }
 };
 
 const populationData = {
@@ -564,7 +565,8 @@ const moralWeightPresets = {
         insect: 1,
         bee: 1,
         mammal: 1,
-        copepod: 1
+        copepod: 1,
+        pteropod: 1
     },
     mammals: {
         human: 1,
@@ -590,7 +592,8 @@ const moralWeightPresets = {
         insect: 0,
         bee: 0,
         mammal: 1,
-        copepod: 0
+        copepod: 0,
+        pteropod: 0
     },
     vertebrates: {
         human: 1,
@@ -616,7 +619,8 @@ const moralWeightPresets = {
         insect: 0,
         bee: 0,
         mammal: 1,
-        copepod: 0
+        copepod: 0,
+        pteropod: 0
     },
     rethink: {
         human: 1,
@@ -642,7 +646,8 @@ const moralWeightPresets = {
         insect: 0.013,
         bee: 0.071,
         mammal: 0.515,
-        copepod: 0
+        copepod: 0,
+        pteropod: 0.002
     },
     neurons: {
         human: 16.3e3,
