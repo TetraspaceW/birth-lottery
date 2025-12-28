@@ -64,6 +64,12 @@ details div {
     justify-content: space-evenly;
 }
 
+.rethink-presets {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
 .weight-category {
     flex: 1;
     min-width: 200px;

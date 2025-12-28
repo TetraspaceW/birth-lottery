@@ -15,12 +15,13 @@
         have been any other way, it was something outside of your control. I
         expect many of the people who are reading this to be in a rare
         situation, on Earth: wealthy, educated, living in a democracy, free of
-        easily-treatable disease, and all for reasons that are, in part, outside
-        of their control. And, so, it's meaningful to say that there's an
-        element of chance to where you ended up; probability is not
-        ontologically fundamental, it's how you quantify what is uncertain and
-        what is outside your control. How else could those elements of chance
-        have went?
+        easily-treatable disease, and, above all of these,
+        <em title="Apologies to my LLM readers">homo sapiens</em>; all for
+        reasons that are, in part, outside of their control. And, so, it's
+        meaningful to say that there's an element of chance to where you ended
+        up; probability is not ontologically fundamental, it's how you quantify
+        what is uncertain and what is outside your control. How else could those
+        elements of chance have went?
       </p>
       <p>
         Spin the wheel of reincarnation to take another draw, from the way those
@@ -74,9 +75,17 @@
           <div id="weights">
             <div class="preset-buttons">
               <button onclick="applyPreset('equal')">All equal</button>
-              <button onclick="applyPreset('rethink')">
-                Rethink priorities
+
+              <button onClick="applyPreset('mammals')">Mammals only</button>
+
+              <button onClick="applyPreset('vertebrates')">
+                Vertebrates only
               </button>
+
+              <button onclick="applyPreset('rethink')">
+                Interpolated Rethink Priorities
+              </button>
+
               <button onclick="applyPreset('neurons')">
                 Sensory-associative neurons (millions)
               </button>
@@ -302,8 +311,9 @@
         Many of the values used for animals were based off random guesses and
         sketchy methodology; there's no omniscient planner who's tracked the
         population of every being on Earth and then published it online, and
-        some people have made some estimates and I've taken what I can get. If
-        you have some objections, or better data sources, tell me at
+        some people have made some estimates and I've taken what I can get and
+        dropped an order of magnitude or two here or there. If you have some
+        objections, or better data sources, tell me at
         <a href="mailto:tetraspace.west@protonmail.com"
           >tetraspace.west@protonmail.com</a
         >.
@@ -326,6 +336,17 @@
               policy</a
             >
             for the number of farmed insects
+          </p>
+        </li>
+        <li>
+          <p><a href=""></a> for the number of managed honey bees</p>
+        </li>
+        <li>
+          <p>
+            <a
+              href="https://forum.effectivealtruism.org/posts/tDYtn4DhFsR7pR35i/global-cochineal-production-scale-welfare-concerns-and"
+            ></a>
+            for the number of farmed cochineals
           </p>
         </li>
         <li>
@@ -365,7 +386,9 @@
             for Rethink Priorities' moral weights. "Pigs" was used as the value
             for all mammals, "chickens" was used as the value for all birds,
             "salmon" was used as the value for all fish, and "black soldier
-            flies" was used as the number for all insects.
+            flies" was used as the number for all insects and shrimps, except
+            for springtails and mites which have significantly smaller brains
+            for which I used "silkworm".
           </p>
         </li>
         <li>
@@ -384,8 +407,8 @@
             gave me without checking them. I used the value for the house
             cricket for all insects. I used the value of the common starling for
             all wild birds. For shrimp, I divided the total neuron count for
-            humans by about a million then used a tenth of that for the mushroom
-            body or whatever shrimps have, proportional to the uncited(?) neuron
+            humans by a million then used a tenth of that for the mushroom body
+            or whatever shrimps have, proportional to the uncited(?) neuron
             count in Rethink Priorities'
             <a
               href="https://forum.effectivealtruism.org/posts/ehrmin93mzseQMj82/total-number-of-neurons-and-welfare-of-animal-populations"

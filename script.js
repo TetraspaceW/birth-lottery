@@ -17,13 +17,14 @@ const speciesConfig = {
     cat: { name: "Cats", defaultWeight: 0.515, category: "mammals" },
     dog: { name: "Dogs", defaultWeight: 0.515, category: "mammals" },
     // Other
+    bee: { name: "Bees", defaultWeight: 0.071, category: "other" },
     fish: { name: "Fish", defaultWeight: 0.056, category: "other" },
-    mite: { name: "Mites", defaultWeight: 0.013, category: "other" },
-    springtail: { name: "Springtails", defaultWeight: 0.013, category: "other" },
+    shrimp: { name: "Shrimps", defaultWeight: 0.031, category: "other" },
     ant: { name: "Ants", defaultWeight: 0.013, category: "other" },
     termite: { name: "Termites", defaultWeight: 0.013, category: "other" },
     insect: { name: "Other insects", defaultWeight: 0.013, category: "other" },
-    shrimp: { name: "Shrimps", defaultWeight: 0.031, category: "other" }
+    springtail: { name: "Springtails", defaultWeight: 0.002, category: "other" },
+    mite: { name: "Mites", defaultWeight: 0.002, category: "other" },
 };
 
 // Population data (approximate values)
@@ -286,6 +287,8 @@ const animalPopulationData = {
     cricket: { population: 37.3e9, category: "domestic", name: "🦗 Farmed cricket", moralWeightKey: "insect" },
     mealworm: { population: 27.8e9, category: "domestic", name: "🐛 Farmed mealworm", moralWeightKey: "insect" },
     "soldier-fly": { population: 11.4e9, category: "domestic", name: "🪰 Farmed black soldier fly", moralWeightKey: "insect" },
+    bee: { population: 2.87e12, category: "domestic", name: "🐝 Managed honey bee", moralWeightKey: "bee" },
+    cochineal: { population: 8.5e9, category: "domestic", name: "🪲 Farmed cochineal", moralWeightKey: "insect" },
     "farmed-insect": { population: 8.485e9, category: "domestic", name: "🦗 Other farmed insect", moralWeightKey: "insect" },
 
 
@@ -545,7 +548,56 @@ const moralWeightPresets = {
         springtail: 1,
         ant: 1,
         termite: 1,
-        insect: 1
+        insect: 1,
+        bee: 1
+    },
+    mammals: {
+        human: 1,
+        chicken: 0,
+        duck: 0,
+        turkey: 0,
+        goose: 0,
+        "other-bird": 0,
+        pig: 1,
+        buffalo: 1,
+        cow: 1,
+        sheep: 1,
+        goat: 1,
+        rabbit: 1,
+        cat: 1,
+        dog: 1,
+        fish: 0,
+        shrimp: 0,
+        mite: 0,
+        springtail: 0,
+        ant: 0,
+        termite: 0,
+        insect: 0,
+        bee: 0
+    },
+    vertebrates: {
+        human: 1,
+        chicken: 1,
+        duck: 1,
+        turkey: 1,
+        goose: 1,
+        "other-bird": 1,
+        pig: 1,
+        buffalo: 1,
+        cow: 1,
+        sheep: 1,
+        goat: 1,
+        rabbit: 1,
+        cat: 1,
+        dog: 1,
+        fish: 1,
+        shrimp: 0,
+        mite: 0,
+        springtail: 0,
+        ant: 0,
+        termite: 0,
+        insect: 0,
+        bee: 0
     },
     rethink: {
         human: 1,
@@ -564,11 +616,12 @@ const moralWeightPresets = {
         dog: 0.515,
         fish: 0.056,
         shrimp: 0.031,
-        mite: 0.013,
-        springtail: 0.013,
+        mite: 0.002,
+        springtail: 0.002,
         ant: 0.013,
         termite: 0.013,
-        insect: 0.013
+        insect: 0.013,
+        bee: 0.071
     },
     neurons: {
         human: 16.3e3,
@@ -584,7 +637,7 @@ const moralWeightPresets = {
         goat: 300,
         rabbit: 70,
         cat: 250,
-        dog: 500,
+        dog: 600,
         fish: 1,
         shrimp: 8.6e-3,
         insect: 50e-3,
@@ -592,6 +645,7 @@ const moralWeightPresets = {
         springtail: 58e-6,
         ant: 25e-3,
         termite: 10e-3,
+        bee: 170e-3,
     },
 };
 
