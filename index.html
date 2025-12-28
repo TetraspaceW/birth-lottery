@@ -37,10 +37,11 @@
       <div class="settings-section">
         <p>
           Making such a wheel depends on some assumptions about which things in
-          the world are conscious, and which things on the world count as
-          relevantly part of the world, for the sake of what humans should
-          intervene on. The following settings let you configure which beings to
-          include and how much those beings relatively matter.
+          the world are conscious, and if it's to be used to motivate any
+          decisionmaking, which things on the world count as relevantly part of
+          the world, for the sake of what humans should intervene on. The
+          following settings let you configure which beings to include, and how
+          much those beings relatively matter.
         </p>
         <details>
           <summary>Categories</summary>
@@ -325,7 +326,7 @@
                 >Shrimp: The animals most commonly used and killed for food
                 production</a
               >
-              for the number of farmed shrimps
+              for the number of farmed shrimps.
             </p>
           </li>
           <li>
@@ -335,7 +336,7 @@
                 >Insects raised for food and feed — global scale, practices, and
                 policy</a
               >
-              for the number of farmed insects
+              for the number of farmed insects.
             </p>
           </li>
           <li>
@@ -345,7 +346,7 @@
                 >Managed honey bee welfare: problems and potential
                 interventions</a
               >
-              for the number of managed honey bees
+              for the number of managed honey bees.
             </p>
           </li>
           <li>
@@ -355,7 +356,7 @@
                 >Global cochineal production: scale, welfare concerns, and
                 potential interventions</a
               >
-              for the number of farmed cochineals
+              for the number of farmed cochineals.
             </p>
           </li>
           <li>
@@ -364,7 +365,7 @@
                 href="https://animalcharityevaluators.org/charity-reviews/causes-we-consider/"
                 >Animal Charity Evaluators' How We Prioritize Causes</a
               >
-              for the number of pet dogs and cats
+              for the number of pet dogs and cats.
             </p>
           </li>
           <li>
@@ -374,7 +375,7 @@
                 >Sentience Institute's Global Farmed & Factory Farmed Animals
                 Estimates</a
               >
-              for the number of farmed fish and vertebrates
+              for the number of farmed fish and vertebrates.
             </p>
           </li>
           <li>
@@ -383,7 +384,7 @@
                 href="en.m.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population"
                 >Wikipedia's list of countries and dependencies by population</a
               >
-              for the human population of each country
+              for the human population of each country.
             </p>
           </li>
           <li>
@@ -397,7 +398,9 @@
               birds, "salmon" was used as the value for all fish, and "black
               soldier flies" was used as the number for all insects and shrimps,
               except for springtails and mites which have significantly smaller
-              brains for which I used "silkworm".
+              brains for which I used "silkworm". I also used the silkworm value
+              for pteropods, and used zero for copepods which have significantly
+              smaller brains than mites, springtails and pteropods.
             </p>
           </li>
           <li>
@@ -465,7 +468,12 @@
               >, which gives 95% of individuals being springtails or mites,
               about <sup>2</sup>/<sub>3</sub> of springtails or mites being
               mites, and the other taxa having similar-looking population
-              densities.
+              densities. For specific taxa of wild mammals I asked a language
+              model and used its guesses. For wild shrimps I randomly guessed
+              that shrimps caught by humans represent about a tenth of all
+              shrimps. For wild mammals I assumed that small mammals were about
+              the same size as small birds and used the relative biomass of
+              mammals compared to birds.
             </p>
           </li>
         </ul>

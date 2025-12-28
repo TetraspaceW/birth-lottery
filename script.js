@@ -316,6 +316,43 @@ const animalPopulationData = {
     "wild-marine-arthropod": { population: 1e20, category: "wild", name: "🦐 Wild copepod", moralWeightKey: "copepod" },
     "wild-pteropod": { population: 5e17, category: "wild", name: "🐌 Wild pteropod", moralWeightKey: "pteropod" }
 };
+const blurbs = {
+    // Category blurbs
+    category: {
+
+    },
+
+    // Species-specific blurbs
+    species: {
+    },
+
+    // Country-specific blurbs for humans
+    country: {
+    }
+};
+
+// Function to collect relevant blurbs for a result
+function getBlurbs(result) {
+    const collectedBlurbs = [];
+
+    // Add species-specific blurb if exists
+    // Use the same key as in animalPopulationData/humanPopulationData
+    if (result.key && blurbs.species[result.key]) {
+        collectedBlurbs.push(blurbs.species[result.key]);
+    }
+
+    // Add country-specific blurb for humans if exists
+    if (result.category === "human" && result.key && blurbs.country[result.key]) {
+        collectedBlurbs.push(blurbs.country[result.key]);
+    }
+
+    // Add category blurb if exists
+    if (result.category && blurbs.category[result.category]) {
+        collectedBlurbs.push(blurbs.category[result.category]);
+    }
+
+    return collectedBlurbs;
+}
 
 const populationData = {
     ...humanPopulationData,
@@ -483,6 +520,8 @@ function calculateWeightedOptions() {
                 key: key,
                 name: data.name,
                 weight: weight,
+                category: data.category,
+                moralWeightKey: data.moralWeightKey,
             });
         }
     }
@@ -525,7 +564,7 @@ function reincarnate() {
         const totalWeight = options.reduce((sum, option) => sum + option.weight, 0);
         const percentage = ((result.weight / totalWeight) * 100).toFixed(1);
 
-        showResult(`${result.name}`);
+        showResult(`${result.name}`, result);
     }
 
     // Change button text to "Draw again" after first click
@@ -533,9 +572,36 @@ function reincarnate() {
     reincarnateBtn.textContent = "Draw again";
 }
 
-function showResult(text) {
+function showResult(text, result = null) {
     const resultDiv = document.getElementById("result");
-    resultDiv.textContent = text;
+
+    // Clear previous content
+    resultDiv.innerHTML = "";
+
+    // Create main result element
+    const resultText = document.createElement("div");
+    resultText.textContent = text;
+    resultText.className = "result-text";
+    resultDiv.appendChild(resultText);
+
+    // Add blurbs if result is provided
+    if (result) {
+        const blurbs = getBlurbs(result);
+        if (blurbs.length > 0) {
+            const blurbsContainer = document.createElement("div");
+            blurbsContainer.className = "blurbs-container";
+
+            blurbs.forEach(blurb => {
+                const blurbElement = document.createElement("p");
+                blurbElement.className = "blurb";
+                blurbElement.innerHTML = blurb;
+                blurbsContainer.appendChild(blurbElement);
+            });
+
+            resultDiv.appendChild(blurbsContainer);
+        }
+    }
+
     resultDiv.classList.add("show");
 
     // Remove animation class after animation completes

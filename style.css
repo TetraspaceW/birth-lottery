@@ -114,3 +114,23 @@ summary h2 {
     display: inline;
     margin: 0;
 }
+
+/* Blurbs styling */
+.blurbs-container {
+    margin-top: 15px;
+    padding-top: 15px;
+}
+
+.blurb {
+    line-height: 1.5;
+    margin: 8px 0;
+    padding: 8px 12px;
+}
+
+.blurb:first-child {
+    margin-top: 0;
+}
+
+.blurb:last-child {
+    margin-bottom: 0;
+}
