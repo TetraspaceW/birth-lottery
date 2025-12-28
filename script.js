@@ -612,87 +612,6 @@ function showResult(text, result = null) {
 
 // Preset configurations for moral weights
 const moralWeightPresets = {
-    equal: {
-        human: 1,
-        chicken: 1,
-        duck: 1,
-        turkey: 1,
-        goose: 1,
-        "other-bird": 1,
-        pig: 1,
-        buffalo: 1,
-        cow: 1,
-        sheep: 1,
-        goat: 1,
-        rabbit: 1,
-        cat: 1,
-        dog: 1,
-        fish: 1,
-        shrimp: 1,
-        mite: 1,
-        springtail: 1,
-        ant: 1,
-        termite: 1,
-        insect: 1,
-        bee: 1,
-        mammal: 1,
-        copepod: 1,
-        pteropod: 1
-    },
-    mammals: {
-        human: 1,
-        chicken: 0,
-        duck: 0,
-        turkey: 0,
-        goose: 0,
-        "other-bird": 0,
-        pig: 1,
-        buffalo: 1,
-        cow: 1,
-        sheep: 1,
-        goat: 1,
-        rabbit: 1,
-        cat: 1,
-        dog: 1,
-        fish: 0,
-        shrimp: 0,
-        mite: 0,
-        springtail: 0,
-        ant: 0,
-        termite: 0,
-        insect: 0,
-        bee: 0,
-        mammal: 1,
-        copepod: 0,
-        pteropod: 0
-    },
-    vertebrates: {
-        human: 1,
-        chicken: 1,
-        duck: 1,
-        turkey: 1,
-        goose: 1,
-        "other-bird": 1,
-        pig: 1,
-        buffalo: 1,
-        cow: 1,
-        sheep: 1,
-        goat: 1,
-        rabbit: 1,
-        cat: 1,
-        dog: 1,
-        fish: 1,
-        shrimp: 0,
-        mite: 0,
-        springtail: 0,
-        ant: 0,
-        termite: 0,
-        insect: 0,
-        bee: 0,
-        mammal: 1,
-        copepod: 0,
-        pteropod: 0
-    },
     rethink: {
         human: 1,
         chicken: 0.332,
@@ -749,15 +668,46 @@ const moralWeightPresets = {
     }
 };
 
+function isMammal(species) {
+    return speciesConfig[species].category == "mammals" || speciesConfig[species].category == "humans";
+}
+
+function isVertebrate(species) {
+    return isMammal(species) || speciesConfig[species].category == "birds" || species == "fish";
+}
+
 // Apply preset moral weights
 function applyPreset(presetName) {
-    const preset = moralWeightPresets[presetName];
-    if (!preset) return;
+    if (presetName == "equal") {
+        for (const species of Object.keys(speciesConfig)) {
+            const input = document.getElementById(`weight-${species}`);
+            if (input) {
+                input.value = 1;
+            }
+        }
+    } else if (presetName == "mammals") {
+        for (const species of Object.keys(speciesConfig)) {
+            const input = document.getElementById(`weight-${species}`);
+            if (input) {
+                input.value = isMammal(species) ? 1 : 0;
+            }
+        }
+    } else if (presetName == "vertebrates") {
+        for (const species of Object.keys(speciesConfig)) {
+            const input = document.getElementById(`weight-${species}`);
+            if (input) {
+                input.value = isVertebrate(species) ? 1 : 0;
+            }
+        }
+    } else {
+        const preset = moralWeightPresets[presetName];
+        if (!preset) return;
 
-    for (const [species, weight] of Object.entries(preset)) {
-        const input = document.getElementById(`weight-${species}`);
-        if (input) {
-            input.value = weight;
+        for (const [species, weight] of Object.entries(preset)) {
+            const input = document.getElementById(`weight-${species}`);
+            if (input) {
+                input.value = weight;
+            }
         }
     }
 }
