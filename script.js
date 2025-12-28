@@ -16,6 +16,7 @@ const speciesConfig = {
     rabbit: { name: "Rabbits", defaultWeight: 0.515, category: "mammals" },
     cat: { name: "Cats", defaultWeight: 0.515, category: "mammals" },
     dog: { name: "Dogs", defaultWeight: 0.515, category: "mammals" },
+    mammal: { name: "Other mammals", defaultWeight: 0.515, category: "mammals" },
     // Other
     bee: { name: "Bees", defaultWeight: 0.071, category: "other" },
     fish: { name: "Fish", defaultWeight: 0.056, category: "other" },
@@ -25,6 +26,8 @@ const speciesConfig = {
     insect: { name: "Other insects", defaultWeight: 0.013, category: "other" },
     springtail: { name: "Springtails", defaultWeight: 0.002, category: "other" },
     mite: { name: "Mites", defaultWeight: 0.002, category: "other" },
+    pteropod: { name: "Pteropods", defaultWeight: 0.002, category: "other" },
+    copepod: { name: "Copepods", defaultWeight: 0, category: "other" }
 };
 
 // Population data (approximate values)
@@ -32,7 +35,8 @@ const humanPopulationData = {
     // Humans (2025 estimates)
     india: { population: 1417492000, category: "human", name: "🇮🇳 Human from India" },
     china: { population: 1408280000, category: "human", name: "🇨🇳 Human from China" },
-    "united-states": { population: 340110988, category: "human", name: "🇺🇸 Human from the United States" },
+    "united-states": { population: 340110987, category: "human", name: "🇺🇸 Human from the United States" },
+    xenia: { population: 1, category: "human", name: "🦊 Xenia" },
     indonesia: { population: 284438782, category: "human", name: "🇮🇩 Human from Indonesia" },
     pakistan: { population: 241499431, category: "human", name: "🇵🇰 Human from Pakistan" },
     nigeria: { population: 223800000, category: "human", name: "🇳🇬 Human from Nigeria" },
@@ -49,7 +53,8 @@ const humanPopulationData = {
     iran: { population: 85961000, category: "human", name: "🇮🇷 Human from Iran" },
     turkey: { population: 85664944, category: "human", name: "🇹🇷 Human from Turkey" },
     germany: { population: 83497147, category: "human", name: "🇩🇪 Human from Germany" },
-    uk: { population: 69487000, category: "human", name: "🇬🇧 Human from the United Kingdom" },
+    uk: { population: 69486999, category: "human", name: "🇬🇧 Human from the United Kingdom" },
+    tetraspace: { population: 1, category: "human", name: "💎 Tetraspace" },
     france: { population: 68736000, category: "human", name: "🇫🇷 Human from France" },
     tanzania: { population: 68153004, category: "human", name: "🇹🇿 Human from Tanzania" },
     thailand: { population: 65826149, category: "human", name: "🇹🇭 Human from Thailand" },
@@ -280,7 +285,7 @@ const animalPopulationData = {
     goat: { population: 1.00e9, category: "domestic", name: "🐐 Farmed goat", moralWeightKey: "goat" },
     pig: { population: 982e6, category: "domestic", name: "🐖 Farmed pig", moralWeightKey: "pig" },
     turkey: { population: 469e6, category: "domestic", name: "🦃 Farmed turkey", moralWeightKey: "turkey" },
-    goose: { population: 381e6, category: "domestic", name: "🦢 Farmed goose", moralWeightKey: "goose" },
+    goose: { population: 381e6, category: "domestic", name: "🪿 Farmed goose", moralWeightKey: "goose" },
     rabbit: { population: 317e6, category: "domestic", name: "🐰 Farmed rabbit", moralWeightKey: "rabbit" },
     buffalo: { population: 199e6, category: "domestic", name: "🦬 Farmed buffalo", moralWeightKey: "buffalo" },
     shrimp: { population: 230e9, category: "domestic", name: "🦐 Farmed shrimp", moralWeightKey: "shrimp" },
@@ -293,13 +298,21 @@ const animalPopulationData = {
 
 
     // Wild animals
+    "wild-mammal": { population: 3.5e11, category: "wild", name: "🐀 Other wild mammal", moralWeightKey: "mammal" },
     "wild-bird": { population: 1e11, category: "wild", name: "🐦 Wild bird", moralWeightKey: "other-bird" },
+    "wild-duck": { population: 3.1e8, category: "wild", name: "🦆 Wild duck", moralWeightKey: "duck" },
+    "wild-rabbit": { population: 3.1e8, category: "wild", name: "🐰 Wild rabbit", moralWeightKey: "rabbit" },
+    "feral-cat": { population: 3.1e8, category: "wild", name: "🐈 Feral cat", moralWeightKey: "cat" },
+    "wild-goose": { population: 1e8, category: "wild", name: "🪿 Wild goose", moralWeightKey: "goose" },
+    "wild-pig": { population: 1e8, category: "wild", name: "🐗 Wild boar", moralWeightKey: "pig" },
     "wild-fish": { population: 1e15, category: "wild", name: "🐟 Wild fish", moralWeightKey: "fish" },
     "wild-mite": { population: 1e18 * 0.95 * 2 / 3, category: "wild", name: "🕷️ Wild mite", moralWeightKey: "mite" },
     "wild-springtail": { population: 1e18 * 0.95 * 1 / 3, category: "wild", name: "🪳 Wild springtail", moralWeightKey: "springtail" },
     "wild-ant": { population: 1e18 * 0.05 * 1 / 3, category: "wild", name: "🐜 Wild ant", moralWeightKey: "ant" },
     "wild-termite": { population: 1e18 * 0.05 * 1 / 3, category: "wild", name: "🐜 Wild termite", moralWeightKey: "termite" },
-    "wild-arthropod": { population: 1e18 * 0.05 * 1 / 3, category: "wild", name: "🕷️ Other wild arthropod", moralWeightKey: "insect" }
+    "wild-arthropod": { population: 1e18 * 0.05 * 1 / 3, category: "wild", name: "🕷️ Other wild arthropod", moralWeightKey: "insect" },
+    "wild-marine-arthropod": { population: 1e20, category: "wild", name: "🦐 Other marine arthropod", moralWeightKey: "copepod" },
+    "wild-pteropod": { population: 5e17, category: "wild", name: "🐌 Wild mollusc", moralWeightKey: "pteropod" }
 };
 
 const populationData = {
@@ -549,7 +562,9 @@ const moralWeightPresets = {
         ant: 1,
         termite: 1,
         insect: 1,
-        bee: 1
+        bee: 1,
+        mammal: 1,
+        copepod: 1
     },
     mammals: {
         human: 1,
@@ -573,7 +588,9 @@ const moralWeightPresets = {
         ant: 0,
         termite: 0,
         insect: 0,
-        bee: 0
+        bee: 0,
+        mammal: 1,
+        copepod: 0
     },
     vertebrates: {
         human: 1,
@@ -597,7 +614,9 @@ const moralWeightPresets = {
         ant: 0,
         termite: 0,
         insect: 0,
-        bee: 0
+        bee: 0,
+        mammal: 1,
+        copepod: 0
     },
     rethink: {
         human: 1,
@@ -621,7 +640,9 @@ const moralWeightPresets = {
         ant: 0.013,
         termite: 0.013,
         insect: 0.013,
-        bee: 0.071
+        bee: 0.071,
+        mammal: 0.515,
+        copepod: 0
     },
     neurons: {
         human: 16.3e3,
@@ -641,12 +662,15 @@ const moralWeightPresets = {
         fish: 1,
         shrimp: 8.6e-3,
         insect: 50e-3,
-        mite: 58e-6,
-        springtail: 58e-6,
+        mite: 580e-6,
+        springtail: 580e-6,
         ant: 25e-3,
         termite: 10e-3,
         bee: 170e-3,
-    },
+        pteropod: 1800e-6,
+        mammal: 20,
+        copepod: 40e-6
+    }
 };
 
 // Apply preset moral weights
