@@ -311,7 +311,7 @@ const animalPopulationData = {
     "wild-ant": { population: 1e18 * 0.05 * 1 / 3, category: "wild", name: "🐜 Wild ant", moralWeightKey: "ant" },
     "wild-termite": { population: 1e18 * 0.05 * 1 / 3, category: "wild", name: "🐜 Wild termite", moralWeightKey: "termite" },
     "wild-arthropod": { population: 1e18 * 0.05 * 1 / 3, category: "wild", name: "🕷️ Other wild arthropod", moralWeightKey: "insect" },
-    "wild-shrimp": { population: 3.1e13, category: "wild", name: "🦐 Wild shrimp", moralWeightKey: "shrimp" },
+    "wild-shrimp": { population: 1e14, category: "wild", name: "🦐 Wild shrimp", moralWeightKey: "shrimp" },
     "wild-marine-arthropod": { population: 1e20, category: "wild", name: "🦐 Wild copepod", moralWeightKey: "copepod" },
     "wild-pteropod": { population: 5e17, category: "wild", name: "🐌 Wild pteropod", moralWeightKey: "pteropod" }
 };
