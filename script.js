@@ -1,12 +1,6 @@
 // Species configuration with default moral weights
 const speciesConfig = {
     human: { name: "Humans", defaultWeight: 1, category: "humans" },
-    // Birds
-    chicken: { name: "Chickens", defaultWeight: 0.332, category: "birds" },
-    duck: { name: "Ducks", defaultWeight: 0.332, category: "birds" },
-    turkey: { name: "Turkeys", defaultWeight: 0.332, category: "birds" },
-    goose: { name: "Geese", defaultWeight: 0.332, category: "birds" },
-    "other-bird": { name: "Other birds", defaultWeight: 0.332, category: "birds" },
     // Mammals
     pig: { name: "Pigs", defaultWeight: 0.515, category: "mammals" },
     buffalo: { name: "Buffalo", defaultWeight: 0.515, category: "mammals" },
@@ -17,17 +11,24 @@ const speciesConfig = {
     cat: { name: "Cats", defaultWeight: 0.515, category: "mammals" },
     dog: { name: "Dogs", defaultWeight: 0.515, category: "mammals" },
     mammal: { name: "Other mammals", defaultWeight: 0.515, category: "mammals" },
+    // Birds
+    chicken: { name: "Chickens", defaultWeight: 0.332, category: "birds" },
+    duck: { name: "Ducks", defaultWeight: 0.332, category: "birds" },
+    turkey: { name: "Turkeys", defaultWeight: 0.332, category: "birds" },
+    goose: { name: "Geese", defaultWeight: 0.332, category: "birds" },
+    "other-bird": { name: "Other birds", defaultWeight: 0.332, category: "birds" },
+    // Arthropods
+    bee: { name: "Bees", defaultWeight: 0.071, category: "arthropods" },
+    shrimp: { name: "Shrimps", defaultWeight: 0.031, category: "arthropods" },
+    ant: { name: "Ants", defaultWeight: 0.013, category: "arthropods" },
+    termite: { name: "Termites", defaultWeight: 0.013, category: "arthropods" },
+    insect: { name: "Other insects", defaultWeight: 0.013, category: "arthropods" },
+    springtail: { name: "Springtails", defaultWeight: 0.002, category: "arthropods" },
+    mite: { name: "Mites", defaultWeight: 0.002, category: "arthropods" },
+    copepod: { name: "Copepods", defaultWeight: 0, category: "arthropods" },
     // Other
-    bee: { name: "Bees", defaultWeight: 0.071, category: "other" },
     fish: { name: "Fish", defaultWeight: 0.056, category: "other" },
-    shrimp: { name: "Shrimps", defaultWeight: 0.031, category: "other" },
-    ant: { name: "Ants", defaultWeight: 0.013, category: "other" },
-    termite: { name: "Termites", defaultWeight: 0.013, category: "other" },
-    insect: { name: "Other insects", defaultWeight: 0.013, category: "other" },
-    springtail: { name: "Springtails", defaultWeight: 0.002, category: "other" },
-    mite: { name: "Mites", defaultWeight: 0.002, category: "other" },
     pteropod: { name: "Pteropods", defaultWeight: 0.002, category: "other" },
-    copepod: { name: "Copepods", defaultWeight: 0, category: "other" }
 };
 
 // Population data (approximate values)
@@ -377,6 +378,7 @@ function generateWeightInputs() {
         humans: [],
         birds: [],
         mammals: [],
+        arthropods: [],
         other: []
     };
 
