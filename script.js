@@ -29,6 +29,7 @@ const speciesConfig = {
     // Other
     fish: { name: "Fish", defaultWeight: 0.056, category: "other" },
     pteropod: { name: "Pteropods", defaultWeight: 0.002, category: "other" },
+    nematode: { name: "Nematodes", defaultWeight: 0, category: "other" }
 };
 
 // Population data (approximate values)
@@ -298,7 +299,6 @@ const animalPopulationData = {
     cochineal: { population: 8.5e9, category: "domestic", name: "🪲 Farmed cochineal", moralWeightKey: "insect" },
     "farmed-insect": { population: 8.485e9, category: "domestic", name: "🦗 Other farmed insect", moralWeightKey: "insect" },
 
-
     // Wild animals
     "wild-mammal": { population: 3.5e11, category: "wild", name: "🐀 Other wild mammal", moralWeightKey: "mammal" },
     "wild-bird": { population: 1e11, category: "wild", name: "🐦 Wild bird", moralWeightKey: "other-bird" },
@@ -315,7 +315,8 @@ const animalPopulationData = {
     "wild-arthropod": { population: 1e18 * 0.05 * 1 / 3, category: "wild", name: "🕷️ Other wild arthropod", moralWeightKey: "insect" },
     "wild-shrimp": { population: 1e14, category: "wild", name: "🦐 Wild shrimp", moralWeightKey: "shrimp" },
     "wild-marine-arthropod": { population: 1e20, category: "wild", name: "🦐 Wild copepod", moralWeightKey: "copepod" },
-    "wild-pteropod": { population: 5e17, category: "wild", name: "🐌 Wild pteropod", moralWeightKey: "pteropod" }
+    "wild-pteropod": { population: 5e17, category: "wild", name: "🐌 Wild pteropod", moralWeightKey: "pteropod" },
+    "wild-nematode": { population: 1e21, category: "wild", name: "🪱 Wild nematode", moralWeightKey: "nematode" }
 };
 const blurbs = {
     // Category blurbs
@@ -613,7 +614,8 @@ const moralWeightPresets = {
         bee: 0.071,
         mammal: 0.515,
         copepod: 0,
-        pteropod: 0.002
+        pteropod: 0.002,
+        nematode: 0
     },
     neurons: {
         human: 16.3e3,
@@ -640,7 +642,8 @@ const moralWeightPresets = {
         bee: 170e-3,
         pteropod: 1800e-6,
         mammal: 20,
-        copepod: 40e-6
+        copepod: 40e-6,
+        nematode: 30e-6
     }
 };
 
