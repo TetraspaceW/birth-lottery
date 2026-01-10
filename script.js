@@ -308,11 +308,11 @@ const animalPopulationData = {
     "wild-goose": { population: 1e8, category: "wild", name: "🪿 Wild goose", moralWeightKey: "goose" },
     "wild-pig": { population: 1e8, category: "wild", name: "🐗 Wild boar", moralWeightKey: "pig" },
     "wild-fish": { population: 1e15, category: "wild", name: "🐟 Wild fish", moralWeightKey: "fish" },
-    "wild-mite": { population: 1e18 * 0.95 * 2 / 3, category: "wild", name: "🕷️ Wild mite", moralWeightKey: "mite" },
-    "wild-springtail": { population: 1e18 * 0.95 * 1 / 3, category: "wild", name: "🪳 Wild springtail", moralWeightKey: "springtail" },
-    "wild-ant": { population: 1e18 * 0.05 * 1 / 3, category: "wild", name: "🐜 Wild ant", moralWeightKey: "ant" },
-    "wild-termite": { population: 1e18 * 0.05 * 1 / 3, category: "wild", name: "🐜 Wild termite", moralWeightKey: "termite" },
-    "wild-arthropod": { population: 1e18 * 0.05 * 1 / 3, category: "wild", name: "🕷️ Other wild arthropod", moralWeightKey: "insect" },
+    "wild-mite": { population: 1e18 * 3.1 * 0.95 * 2 / 3, category: "wild", name: "🕷️ Wild mite", moralWeightKey: "mite" },
+    "wild-springtail": { population: 1e18 * 3.1 * 0.95 * 1 / 3, category: "wild", name: "🪳 Wild springtail", moralWeightKey: "springtail" },
+    "wild-ant": { population: 1e18 * 3.1 * 0.05 * 1 / 3, category: "wild", name: "🐜 Wild ant", moralWeightKey: "ant" },
+    "wild-termite": { population: 1e18 * 3.1 * 0.05 * 1 / 3, category: "wild", name: "🐜 Wild termite", moralWeightKey: "termite" },
+    "wild-arthropod": { population: 1e18 * 3.1 * 0.05 * 1 / 3, category: "wild", name: "🕷️ Other wild arthropod", moralWeightKey: "insect" },
     "wild-shrimp": { population: 1e14, category: "wild", name: "🦐 Wild shrimp", moralWeightKey: "shrimp" },
     "wild-marine-arthropod": { population: 1e20, category: "wild", name: "🦐 Wild copepod", moralWeightKey: "copepod" },
     "wild-pteropod": { population: 5e17, category: "wild", name: "🐌 Wild pteropod", moralWeightKey: "pteropod" },
@@ -642,7 +642,7 @@ const moralWeightPresets = {
         bee: 170e-3,
         pteropod: 1800e-6,
         mammal: 20,
-        copepod: 40e-6,
+        copepod: 727e-6,
         nematode: 30e-6
     }
 };
