@@ -619,11 +619,11 @@ const moralWeightPresets = {
     },
     neurons: {
         human: 16.3e3,
-        chicken: 100,
+        chicken: 60,
         duck: 250,
         turkey: 100,
         goose: 300,
-        "other-bird": 226,
+        "other-bird": 200,
         pig: 425,
         buffalo: 500,
         cow: 500,
