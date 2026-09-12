@@ -310,12 +310,14 @@ const animalPopulationData = {
     "wild-fish": { population: 1e15, category: "wild", name: "🐟 Wild fish", moralWeightKey: "fish" },
     // Wild soil arthropods from Rosenberg et al. 2023 (Sci Adv abq4049): ~1e19
     // individuals total (0.5-2e19), >95% of which are mites+springtails with
-    // ~2/3 of those being mites; soil springtails directly estimated at 3e18
-    // and nonarboreal ants at 5e16. Termites/other arthropods have no direct
-    // population estimate in the paper, so kept at previous order of magnitude.
+    // ~2/3 of those being mites; soil springtails directly estimated at 3e18.
+    // Ants use the ant-dedicated synthesis of Schulte et al. 2022 (PNAS) at
+    // 2e16 (within Rosenberg's 1-9e16 range for soil ants). Termites/other
+    // arthropods have no direct population estimate, so kept at previous
+    // order of magnitude.
     "wild-mite": { population: 1e19 * 0.95 * 2 / 3, category: "wild", name: "🕷️ Wild mite", moralWeightKey: "mite" },
     "wild-springtail": { population: 3e18, category: "wild", name: "🪳 Wild springtail", moralWeightKey: "springtail" },
-    "wild-ant": { population: 5e16, category: "wild", name: "🐜 Wild ant", moralWeightKey: "ant" },
+    "wild-ant": { population: 2e16, category: "wild", name: "🐜 Wild ant", moralWeightKey: "ant" },
     "wild-termite": { population: 5.2e16, category: "wild", name: "🐜 Wild termite", moralWeightKey: "termite" },
     "wild-arthropod": { population: 5.2e16, category: "wild", name: "🕷️ Other wild arthropod", moralWeightKey: "insect" },
     "wild-shrimp": { population: 1e14, category: "wild", name: "🦐 Wild shrimp", moralWeightKey: "shrimp" },
