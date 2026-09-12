@@ -308,11 +308,18 @@ const animalPopulationData = {
     "wild-goose": { population: 1e8, category: "wild", name: "🪿 Wild goose", moralWeightKey: "goose" },
     "wild-pig": { population: 1e8, category: "wild", name: "🐗 Wild boar", moralWeightKey: "pig" },
     "wild-fish": { population: 1e15, category: "wild", name: "🐟 Wild fish", moralWeightKey: "fish" },
-    "wild-mite": { population: 1e18 * 3.1 * 0.95 * 2 / 3, category: "wild", name: "🕷️ Wild mite", moralWeightKey: "mite" },
-    "wild-springtail": { population: 1e18 * 3.1 * 0.95 * 1 / 3, category: "wild", name: "🪳 Wild springtail", moralWeightKey: "springtail" },
-    "wild-ant": { population: 1e18 * 3.1 * 0.05 * 1 / 3, category: "wild", name: "🐜 Wild ant", moralWeightKey: "ant" },
-    "wild-termite": { population: 1e18 * 3.1 * 0.05 * 1 / 3, category: "wild", name: "🐜 Wild termite", moralWeightKey: "termite" },
-    "wild-arthropod": { population: 1e18 * 3.1 * 0.05 * 1 / 3, category: "wild", name: "🕷️ Other wild arthropod", moralWeightKey: "insect" },
+    // Wild soil arthropods from Rosenberg et al. 2023 (Sci Adv abq4049): ~1e19
+    // individuals total (0.5-2e19), >95% of which are mites+springtails with
+    // ~2/3 of those being mites; soil springtails directly estimated at 3e18.
+    // Ants use the ant-dedicated synthesis of Schulte et al. 2022 (PNAS) at
+    // 2e16 (within Rosenberg's 1-9e16 range for soil ants). Termites/other
+    // arthropods have no direct population estimate, so kept at previous
+    // order of magnitude.
+    "wild-mite": { population: 1e19 * 0.95 * 2 / 3, category: "wild", name: "🕷️ Wild mite", moralWeightKey: "mite" },
+    "wild-springtail": { population: 3e18, category: "wild", name: "🪳 Wild springtail", moralWeightKey: "springtail" },
+    "wild-ant": { population: 2e16, category: "wild", name: "🐜 Wild ant", moralWeightKey: "ant" },
+    "wild-termite": { population: 5.2e16, category: "wild", name: "🐜 Wild termite", moralWeightKey: "termite" },
+    "wild-arthropod": { population: 5.2e16, category: "wild", name: "🕷️ Other wild arthropod", moralWeightKey: "insect" },
     "wild-shrimp": { population: 1e14, category: "wild", name: "🦐 Wild shrimp", moralWeightKey: "shrimp" },
     "wild-marine-arthropod": { population: 1e20, category: "wild", name: "🦐 Wild copepod", moralWeightKey: "copepod" },
     "wild-pteropod": { population: 5e17, category: "wild", name: "🐌 Wild pteropod", moralWeightKey: "pteropod" },
