@@ -275,43 +275,24 @@ const humanPopulationData = {
     "pitcairn-islands": { population: 35, category: "human", name: "🇵🇳 Human from the Pitcairn Islands" },
 };
 
-// Fixed model envelope from Rosenberg et al. 2023 (not an exact census):
-// https://doi.org/10.1126/sciadv.abq4049 (global uncertainty range 0.5e19-2e19).
-// Soil/litter abundances approximate the terrestrial total; above-ground
-// individuals contribute little to the global count.
-const wildTerrestrialArthropodTotal = 1e19;
-
-// Schultheiss et al. 2022, ant-specific synthesis of 489 studies:
-// https://doi.org/10.1073/pnas.2201550119
-// Published central estimate includes arboreal and nonforaging ants, but is
-// conservative: subterranean fauna, brood and reproductive castes are omitted.
-const wildAntPopulation = 19.8e15;
-
-// Non-ant means reproduced from Rosenberg's deposited data and main notebook:
-// https://zenodo.org/records/7565553
+// Soil/litter population means reproduced from Rosenberg et al. 2023:
+// https://doi.org/10.1126/sciadv.abq4049
+// Data and analysis: https://zenodo.org/records/7565553
 // 01-Main-Estimate_global_biomass_and_numbers.ipynb, population calculation.
-// Average taxa within sites, sum within groups, average sites within biomes,
-// then multiply population densities by biome areas and sum globally.
-// Values include the mean effect of the authors' zero-clipped Gaussian
-// measurement errors, rounded to six significant figures.
-const rosenbergNonAntPopulations = {
-    mite: 6.54236e18,
-    springtail: 3.44918e18,
-    termite: 1.10926e17,
-    other: 2.91494e17,
-};
-const nonAntPopulationScale = (wildTerrestrialArthropodTotal - wildAntPopulation) /
-    Object.values(rosenbergNonAntPopulations).reduce((sum, value) => sum + value, 0);
+// Average observations by taxon and site, sum within groups, average sites
+// within biomes, then multiply densities by biome areas and sum globally.
+// These reproduction outputs include the expectation of zero-clipped Gaussian
+// measurement errors; extra digits preserve the calculation, not precision.
+// All five groups use Rosenberg, including nonarboreal ants. No normalization
+// to the paper's rounded 1e19 total: their sum is approximately 1.04402e19.
+// Above-ground arthropods are not separately estimated here.
 const wildTerrestrialArthropodPopulations = {
-    mite: rosenbergNonAntPopulations.mite * nonAntPopulationScale,
-    springtail: rosenbergNonAntPopulations.springtail * nonAntPopulationScale,
-    ant: wildAntPopulation,
-    termite: rosenbergNonAntPopulations.termite * nonAntPopulationScale,
+    mite: 6.542360117302414e18,
+    springtail: 3.449184911318771e18,
+    ant: 4.621089080670735e16,
+    termite: 1.1092611718728837e17,
+    other: 2.914943474276029e17,
 };
-// Allocate the final group by subtraction to absorb floating-point rounding.
-// Its abundance has the same proportional scaling to numerical precision.
-wildTerrestrialArthropodPopulations.other = wildTerrestrialArthropodTotal -
-    Object.values(wildTerrestrialArthropodPopulations).reduce((sum, value) => sum + value, 0);
 
 const animalPopulationData = {
     // Farmed animals
