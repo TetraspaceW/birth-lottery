@@ -32,7 +32,7 @@
   <body>
     <div class="container">
       <h1>The Birth Lottery</h1>
-      <em>Last updated 2026-09-11</em>
+      <em>Last updated 2026-09-14</em>
       <p>
         You didn't choose the circumstances of your birth; even if it couldn't
         have been any other way, it was something outside of your control. I
@@ -486,24 +486,33 @@
               <a
                 href="https://forum.effectivealtruism.org/posts/ehrmin93mzseQMj82/total-number-of-neurons-and-welfare-of-animal-populations"
                 >Total number of neurons and welfare of animal populations</a
-              >. For wild soil arthropod populations, I use
+              >. For wild terrestrial arthropods, I use a model total of
+              1×10<sup>19</sup> individuals, based on Rosenberg et al.'s
               <a href="https://www.science.org/doi/10.1126/sciadv.abq4049">
                 The global biomass and number of terrestrial arthropods</a
-              >, which estimates ≈1×10<sup>19</sup> individuals in total
-              (uncertainty range 0.5–2×10<sup>19</sup>; above-ground
-              arthropods contribute little to the number of individuals),
-              over 95% of which are springtails or mites, with about
-              <sup>2</sup>/<sub>3</sub> of those being mites. The paper
-              directly estimates 3×10<sup>18</sup> springtails. For ants I
-              use the ant-dedicated synthesis of
+              >. Its soil and plant litter estimate is approximately
+              1×10<sup>19</sup> (uncertainty range
+              0.5–2×10<sup>19</sup>); above-ground arthropods contribute
+              little to the total number of individuals.
+              For ants, I use 1.98×10<sup>16</sup> from
               <a href="https://www.pnas.org/doi/10.1073/pnas.2201550119">
-                Schulte et al.</a
-              >, ≈2×10<sup>16</sup> (within Rosenberg's 1–9×10<sup>16</sup>
-              range for soil ants); termites and other wild arthropods have
-              no direct population estimate in either paper, so I keep
-              them at ≈5×10<sup>16</sup> each, consistent with the small
-              non-microarthropod remainder given the twofold uncertainties
-              throughout. For specific taxa of wild mammals I asked a language
+                Schultheiss et al.</a
+              >, an ant-specific synthesis of 489 studies that includes
+              arboreal and nonforaging ants. This estimate is conservative:
+              subterranean fauna, brood and reproductive castes are omitted.
+              For mites, springtails, termites and other soil arthropods, I
+              use population totals reproduced from
+              <a href="https://zenodo.org/records/7565553">
+                Rosenberg et al.'s deposited data and analysis notebook</a
+              >. I multiply these four estimates by the same factor
+              (approximately 0.96019) to fill the remaining
+              9.9802×10<sup>18</sup> individuals. This preserves their
+              relative abundances and makes the five model populations sum
+              exactly to 1×10<sup>19</sup>. The exact total is a modelling
+              choice; the underlying estimates remain uncertain.
+              “Other” excludes the four named groups and the marine
+              arthropods represented separately.
+              For specific taxa of wild mammals I asked a language
               model and used its guesses. For wild shrimps I randomly guessed
               that shrimps caught by humans represent about a tenth of all
               shrimps. For wild mammals I assumed that small mammals were about

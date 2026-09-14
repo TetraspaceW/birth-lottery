@@ -275,6 +275,44 @@ const humanPopulationData = {
     "pitcairn-islands": { population: 35, category: "human", name: "🇵🇳 Human from the Pitcairn Islands" },
 };
 
+// Fixed model envelope from Rosenberg et al. 2023 (not an exact census):
+// https://doi.org/10.1126/sciadv.abq4049 (global uncertainty range 0.5e19-2e19).
+// Soil/litter abundances approximate the terrestrial total; above-ground
+// individuals contribute little to the global count.
+const wildTerrestrialArthropodTotal = 1e19;
+
+// Schultheiss et al. 2022, ant-specific synthesis of 489 studies:
+// https://doi.org/10.1073/pnas.2201550119
+// Published central estimate includes arboreal and nonforaging ants, but is
+// conservative: subterranean fauna, brood and reproductive castes are omitted.
+const wildAntPopulation = 19.8e15;
+
+// Non-ant means reproduced from Rosenberg's deposited data and main notebook:
+// https://zenodo.org/records/7565553
+// 01-Main-Estimate_global_biomass_and_numbers.ipynb, population calculation.
+// Average taxa within sites, sum within groups, average sites within biomes,
+// then multiply population densities by biome areas and sum globally.
+// Values include the mean effect of the authors' zero-clipped Gaussian
+// measurement errors, rounded to six significant figures.
+const rosenbergNonAntPopulations = {
+    mite: 6.54236e18,
+    springtail: 3.44918e18,
+    termite: 1.10926e17,
+    other: 2.91494e17,
+};
+const nonAntPopulationScale = (wildTerrestrialArthropodTotal - wildAntPopulation) /
+    Object.values(rosenbergNonAntPopulations).reduce((sum, value) => sum + value, 0);
+const wildTerrestrialArthropodPopulations = {
+    mite: rosenbergNonAntPopulations.mite * nonAntPopulationScale,
+    springtail: rosenbergNonAntPopulations.springtail * nonAntPopulationScale,
+    ant: wildAntPopulation,
+    termite: rosenbergNonAntPopulations.termite * nonAntPopulationScale,
+};
+// Allocate the final group by subtraction to absorb floating-point rounding.
+// Its abundance has the same proportional scaling to numerical precision.
+wildTerrestrialArthropodPopulations.other = wildTerrestrialArthropodTotal -
+    Object.values(wildTerrestrialArthropodPopulations).reduce((sum, value) => sum + value, 0);
+
 const animalPopulationData = {
     // Farmed animals
     fish: { population: 77e9, category: "domestic", name: "🐟 Farmed fish", moralWeightKey: "fish" },
@@ -308,18 +346,11 @@ const animalPopulationData = {
     "wild-goose": { population: 1e8, category: "wild", name: "🪿 Wild goose", moralWeightKey: "goose" },
     "wild-pig": { population: 1e8, category: "wild", name: "🐗 Wild boar", moralWeightKey: "pig" },
     "wild-fish": { population: 1e15, category: "wild", name: "🐟 Wild fish", moralWeightKey: "fish" },
-    // Wild soil arthropods from Rosenberg et al. 2023 (Sci Adv abq4049): ~1e19
-    // individuals total (0.5-2e19), >95% of which are mites+springtails with
-    // ~2/3 of those being mites; soil springtails directly estimated at 3e18.
-    // Ants use the ant-dedicated synthesis of Schulte et al. 2022 (PNAS) at
-    // 2e16 (within Rosenberg's 1-9e16 range for soil ants). Termites/other
-    // arthropods have no direct population estimate, so kept at previous
-    // order of magnitude.
-    "wild-mite": { population: 1e19 * 0.95 * 2 / 3, category: "wild", name: "🕷️ Wild mite", moralWeightKey: "mite" },
-    "wild-springtail": { population: 3e18, category: "wild", name: "🪳 Wild springtail", moralWeightKey: "springtail" },
-    "wild-ant": { population: 2e16, category: "wild", name: "🐜 Wild ant", moralWeightKey: "ant" },
-    "wild-termite": { population: 5.2e16, category: "wild", name: "🐜 Wild termite", moralWeightKey: "termite" },
-    "wild-arthropod": { population: 5.2e16, category: "wild", name: "🕷️ Other wild arthropod", moralWeightKey: "insect" },
+    "wild-mite": { population: wildTerrestrialArthropodPopulations.mite, category: "wild", name: "🕷️ Wild mite", moralWeightKey: "mite" },
+    "wild-springtail": { population: wildTerrestrialArthropodPopulations.springtail, category: "wild", name: "🪳 Wild springtail", moralWeightKey: "springtail" },
+    "wild-ant": { population: wildTerrestrialArthropodPopulations.ant, category: "wild", name: "🐜 Wild ant", moralWeightKey: "ant" },
+    "wild-termite": { population: wildTerrestrialArthropodPopulations.termite, category: "wild", name: "🐜 Wild termite", moralWeightKey: "termite" },
+    "wild-arthropod": { population: wildTerrestrialArthropodPopulations.other, category: "wild", name: "🕷️ Other wild terrestrial arthropod", moralWeightKey: "insect" },
     "wild-shrimp": { population: 1e14, category: "wild", name: "🦐 Wild shrimp", moralWeightKey: "shrimp" },
     "wild-marine-arthropod": { population: 1e20, category: "wild", name: "🦐 Wild copepod", moralWeightKey: "copepod" },
     "wild-pteropod": { population: 5e17, category: "wild", name: "🐌 Wild pteropod", moralWeightKey: "pteropod" },
