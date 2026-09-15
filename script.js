@@ -324,7 +324,8 @@ const animalPopulationData = {
     "wild-shrimp": { population: 1e14, category: "wild", name: "🦐 Wild shrimp", moralWeightKey: "shrimp" },
     "wild-marine-arthropod": { population: 1e20, category: "wild", name: "🦐 Wild copepod", moralWeightKey: "copepod" },
     "wild-pteropod": { population: 5e17, category: "wild", name: "🐌 Wild pteropod", moralWeightKey: "pteropod" },
-    "wild-nematode": { population: 1e21, category: "wild", name: "🪱 Wild nematode", moralWeightKey: "nematode" }
+    "wild-soil-nematode": { population: 4.4e20, category: "wild", name: "🪱 Wild soil nematode", moralWeightKey: "nematode" },
+    "wild-marine-nematode": { population: 9e19, category: "wild", name: "🪱 Wild marine nematode", moralWeightKey: "nematode" }
 };
 const blurbs = {
     // Category blurbs
