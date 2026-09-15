@@ -275,6 +275,25 @@ const humanPopulationData = {
     "pitcairn-islands": { population: 35, category: "human", name: "🇵🇳 Human from the Pitcairn Islands" },
 };
 
+// Soil/litter population means reproduced from Rosenberg et al. 2023:
+// https://doi.org/10.1126/sciadv.abq4049
+// Data and analysis: https://zenodo.org/records/7565553
+// 01-Main-Estimate_global_biomass_and_numbers.ipynb, population calculation.
+// Average observations by taxon and site, sum within groups, average sites
+// within biomes, then multiply densities by biome areas and sum globally.
+// These reproduction outputs include the expectation of zero-clipped Gaussian
+// measurement errors; extra digits preserve the calculation, not precision.
+// All five groups use Rosenberg, including nonarboreal ants. No normalization
+// to the paper's rounded 1e19 total: their sum is approximately 1.04402e19.
+// Above-ground arthropods are not separately estimated here.
+const wildTerrestrialArthropodPopulations = {
+    mite: 6.542360117302414e18,
+    springtail: 3.449184911318771e18,
+    ant: 4.621089080670735e16,
+    termite: 1.1092611718728837e17,
+    other: 2.914943474276029e17,
+};
+
 const animalPopulationData = {
     // Farmed animals
     fish: { population: 77e9, category: "domestic", name: "🐟 Farmed fish", moralWeightKey: "fish" },
@@ -308,11 +327,11 @@ const animalPopulationData = {
     "wild-goose": { population: 1e8, category: "wild", name: "🪿 Wild goose", moralWeightKey: "goose" },
     "wild-pig": { population: 1e8, category: "wild", name: "🐗 Wild boar", moralWeightKey: "pig" },
     "wild-fish": { population: 1e15, category: "wild", name: "🐟 Wild fish", moralWeightKey: "fish" },
-    "wild-mite": { population: 1e18 * 3.1 * 0.95 * 2 / 3, category: "wild", name: "🕷️ Wild mite", moralWeightKey: "mite" },
-    "wild-springtail": { population: 1e18 * 3.1 * 0.95 * 1 / 3, category: "wild", name: "🪳 Wild springtail", moralWeightKey: "springtail" },
-    "wild-ant": { population: 1e18 * 3.1 * 0.05 * 1 / 3, category: "wild", name: "🐜 Wild ant", moralWeightKey: "ant" },
-    "wild-termite": { population: 1e18 * 3.1 * 0.05 * 1 / 3, category: "wild", name: "🐜 Wild termite", moralWeightKey: "termite" },
-    "wild-arthropod": { population: 1e18 * 3.1 * 0.05 * 1 / 3, category: "wild", name: "🕷️ Other wild arthropod", moralWeightKey: "insect" },
+    "wild-mite": { population: wildTerrestrialArthropodPopulations.mite, category: "wild", name: "🕷️ Wild mite", moralWeightKey: "mite" },
+    "wild-springtail": { population: wildTerrestrialArthropodPopulations.springtail, category: "wild", name: "🪳 Wild springtail", moralWeightKey: "springtail" },
+    "wild-ant": { population: wildTerrestrialArthropodPopulations.ant, category: "wild", name: "🐜 Wild ant", moralWeightKey: "ant" },
+    "wild-termite": { population: wildTerrestrialArthropodPopulations.termite, category: "wild", name: "🐜 Wild termite", moralWeightKey: "termite" },
+    "wild-arthropod": { population: wildTerrestrialArthropodPopulations.other, category: "wild", name: "🕷️ Other wild terrestrial arthropod", moralWeightKey: "insect" },
     "wild-shrimp": { population: 1e14, category: "wild", name: "🦐 Wild shrimp", moralWeightKey: "shrimp" },
     "wild-marine-arthropod": { population: 1e20, category: "wild", name: "🦐 Wild copepod", moralWeightKey: "copepod" },
     "wild-pteropod": { population: 5e17, category: "wild", name: "🐌 Wild pteropod", moralWeightKey: "pteropod" },
