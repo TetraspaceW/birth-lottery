@@ -275,17 +275,6 @@ const humanPopulationData = {
     "pitcairn-islands": { population: 35, category: "human", name: "🇵🇳 Human from the Pitcairn Islands" },
 };
 
-// Soil/litter population means reproduced from Rosenberg et al. 2023:
-// https://doi.org/10.1126/sciadv.abq4049
-// Data and analysis: https://zenodo.org/records/7565553
-// 01-Main-Estimate_global_biomass_and_numbers.ipynb, population calculation.
-// Average observations by taxon and site, sum within groups, average sites
-// within biomes, then multiply densities by biome areas and sum globally.
-// These reproduction outputs include the expectation of zero-clipped Gaussian
-// measurement errors; extra digits preserve the calculation, not precision.
-// All five groups use Rosenberg, including nonarboreal ants. No normalization
-// to the paper's rounded 1e19 total: their sum is approximately 1.04402e19.
-// Above-ground arthropods are not separately estimated here.
 const wildTerrestrialArthropodPopulations = {
     mite: 6.542360117302414e18,
     springtail: 3.449184911318771e18,
