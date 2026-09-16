@@ -309,8 +309,7 @@ const animalPopulationData = {
 
     // Wild animals
     "wild-mammal": { population: 3.5e11, category: "wild", name: "🐀 Other wild mammal", moralWeightKey: "mammal" },
-    // Callaghan et al. (2021) median ~50 billion (mean ~428 billion; 95% CI 3.9B-2,080B; contested by Robinson et al. 2022). Older estimates: 200-400B (Gaston & Blackburn 1997)
-    "wild-bird": { population: 5e10, category: "wild", name: "🐦 Wild bird", moralWeightKey: "other-bird" },
+    "wild-bird": { population: 1e11, category: "wild", name: "🐦 Wild bird", moralWeightKey: "other-bird" },
     "wild-duck": { population: 3.1e8, category: "wild", name: "🦆 Wild duck", moralWeightKey: "duck" },
     "wild-rabbit": { population: 3.1e8, category: "wild", name: "🐰 Wild rabbit", moralWeightKey: "rabbit" },
     "feral-cat": { population: 3.1e8, category: "wild", name: "🐈 Feral cat", moralWeightKey: "cat" },
