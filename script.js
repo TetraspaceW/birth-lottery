@@ -304,7 +304,7 @@ const animalPopulationData = {
     mealworm: { population: 27.8e9, category: "domestic", name: "🐛 Farmed mealworm", moralWeightKey: "insect" },
     "soldier-fly": { population: 11.4e9, category: "domestic", name: "🪰 Farmed black soldier fly", moralWeightKey: "insect" },
     bee: { population: 2.87e12, category: "domestic", name: "🐝 Managed honey bee", moralWeightKey: "bee" },
-    cochineal: { population: 8.5e9, category: "domestic", name: "🪲 Farmed cochineal", moralWeightKey: "insect" },
+    cochineal: { population: 2.1e11, category: "domestic", name: "🪲 Farmed cochineal", moralWeightKey: "insect" },
     "farmed-insect": { population: 8.485e9, category: "domestic", name: "🦗 Other farmed insect", moralWeightKey: "insect" },
 
     // Wild animals
@@ -634,10 +634,10 @@ const moralWeightPresets = {
         goose: 300,
         "other-bird": 226,
         pig: 293,
-        buffalo: 500,
-        cow: 500,
-        sheep: 300,
-        goat: 300,
+        buffalo: 1300,
+        cow: 1300,
+        sheep: 490,
+        goat: 470,
         rabbit: 70,
         cat: 250,
         dog: 600,
@@ -651,7 +651,7 @@ const moralWeightPresets = {
         bee: 170e-3,
         pteropod: 1800e-6,
         mammal: 20,
-        copepod: 727e-6,
+        copepod: 73e-6,
         nematode: 30e-6
     }
 };
