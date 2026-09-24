@@ -33,7 +33,7 @@
   <body>
     <div class="container">
       <h1>The Birth Lottery</h1>
-      <em>Last updated 2026-09-15</em>
+      <em>Last updated 2026-09-24</em>
       <p>
         You didn't choose the circumstances of your birth; even if it couldn't
         have been any other way, it was something outside of your control. I
@@ -241,7 +241,7 @@
             does corporate and institutional outreach in south America and
             southeast Asia, getting corporations to make cage-free commitments
             for egg-laying hens, to get institutions to provide plant-based
-            meals in Argentina, Columbia and Indonesia, and to get pork
+            meals in Argentina, Colombia and Indonesia, and to get pork
             producers in Brazil to give sows more space and to treat piglets
             better.
           </p>
@@ -272,9 +272,9 @@
       </ul>
       <h3>Global Health and Development</h3>
       <p>
-        <a href="https://www.givewell.org/">Givewell</a> evaluates charities
+        <a href="https://www.givewell.org/">GiveWell</a> evaluates charities
         that help humans living today. All else equal, it's more effective to
-        help people who are living in developing countries; Givewell estimates
+        help people who are living in developing countries; GiveWell estimates
         that, on average, an extra $3500 spent correctly in developing countries
         can do the equivalent of saving a life (specifically from vitamin A
         supplementation reducing the rate of death from infections caused by
@@ -292,9 +292,9 @@
             >
             gives out malaria medicine. In some countries, especially in
             subsaharan Africa, malaria is highly seasonal - most cases of
-            malaria happen during the summer. Malaria Consortium focuses on
-            giving out malaria medicine during these four months, where it has
-            the greatest impact.
+            malaria happen during the rainy season. Malaria Consortium focuses
+            on giving out malaria medicine monthly during the four or five
+            months of the peak season, where it has the greatest impact.
           </p>
         </li>
         <li>
@@ -312,7 +312,7 @@
           <p>
             <a
               href="https://www.givewell.org/charities/helen-keller-international"
-              >Hellen Keller International</a
+              >Helen Keller Intl</a
             >
             distributes Vitamin A supplements for preschool aged children in
             Africa, reducing Vitamin A deficiency which makes people vulnerable
@@ -397,17 +397,27 @@
           <li>
             <p>
               <a
-                href="https://www.sentienceinstitute.org/global-animal-farming-estimates"
-                >Sentience Institute's Global Farmed & Factory Farmed Animals
-                Estimates</a
+                href="https://forum.effectivealtruism.org/posts/Rw3iXiJ4Fw4ePu4t6/forecasting-farmed-animal-numbers-in-2033"
+                >Rethink Priorities' Forecasting farmed animal numbers in
+                2033</a
               >
-              for the number of farmed fish and vertebrates.
+              for the number of farmed fish alive at any time (2022 estimate).
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://www.fao.org/faostat/en/#data/QCL"
+                >FAOSTAT's live animal stocks</a
+              >
+              for 2024 for the number of farmed land vertebrates. Farmed
+              egg-laying chickens are FAO's count of laying hens, and other
+              farmed chickens are all chickens minus laying hens.
             </p>
           </li>
           <li>
             <p>
               <a
-                href="en.m.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population"
+                href="https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population"
                 >Wikipedia's list of countries and dependencies by population</a
               >
               for the human population of each country.
@@ -421,8 +431,9 @@
               >
               for Rethink Priorities' moral weights. "Pigs" was used as the
               value for all mammals, "chickens" was used as the value for all
-              birds, "salmon" was used as the value for all fish, and "black
-              soldier flies" was used as the number for all insects and shrimps,
+              birds, "salmon" was used as the value for all fish, "shrimp" was
+              used for shrimps, "bees" was used for honey bees, and "black
+              soldier flies" was used as the number for all other insects,
               except for springtails and mites which have significantly smaller
               brains for which I used "silkworm". I also used the silkworm value
               for pteropods, and used zero for copepods which have significantly
@@ -432,29 +443,31 @@
           <li>
             <p>
               Sensory-associative neuron counts for humans, dogs, cats, rabbits,
-              ducks, geese, and turkeys were obtained from
+              chickens, ducks, geese, and turkeys were obtained from
               <a
                 href="https://en.wikipedia.org/wiki/List_of_animals_by_number_of_neurons#Forebrain_(cerebrum_or_pallium)_only"
                 >Wikipedia's list of animals by number of neurons</a
-              >. I got a language model to read
+              >. For pigs I used the cerebral cortex count from
               <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4228855/"
                 >Cellular scaling rules for the brain of Artiodactyla include a
                 highly folded cortex with few neurons</a
-              >
-              for pigs, cows, sheep, goats, and buffalo, and used the numbers it
-              gave me without checking them. I used the value for the house
+              >. That paper doesn't cover cows, sheep, goats, or buffalo; the
+              values for those came from a language model and are unsourced. I
+              used the value for the house
               cricket for all insects. I used the value of the common starling
               for all wild birds. For shrimp, I divided the total neuron count
               for humans by a million then used a tenth of that for the mushroom
-              body or whatever shrimps have, proportional to the uncited(?)
-              neuron count in Rethink Priorities'
+              body or whatever shrimps have, proportional to the neuron count
+              used in Vasco Grilo's
               <a
                 href="https://forum.effectivealtruism.org/posts/ehrmin93mzseQMj82/total-number-of-neurons-and-welfare-of-animal-populations"
-                >Welfare Range and Probability of Sentience Distributions</a
-              >. For fish, I randomly guess that pallial neurons are about 10%
-              of the total brain, and that an adult zebrafish's neuron count is
-              similar to that of the most common fish taxon, lanternfish (both
-              being a few cm long), the total neuron count of which I got from
+                >Total number of neurons and welfare of animal populations</a
+              >, which takes it from Table 5 of Rethink Priorities' welfare
+              range report. For fish, I randomly guess that pallial neurons are
+              about 10% of the total brain, and that an adult zebrafish's neuron
+              count is similar to that of the most numerous fish, bristlemouths
+              (both being a few cm long), the total neuron count of which (5
+              million) I got from
               <a
                 href="https://eukaryotewritesblog.com/how-many-neurons-are-there/"
                 >How many neurons are there?</a
@@ -499,7 +512,8 @@
                 the authors' zenodo notebook</a
               >. For specific taxa of wild mammals I asked a language model and
               used its guesses. For wild shrimps I randomly guessed that shrimps
-              caught by humans represent about a tenth of all shrimps. For wild
+              caught by humans (about 25 trillion a year, per the shrimp report
+              above) represent about a tenth of all shrimps. For wild
               mammals I assumed that small mammals were about the same size as
               small birds and used the relative biomass of mammals compared to
               birds. For wild nematodes I split soil and marine nematodes into
