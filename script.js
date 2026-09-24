@@ -304,7 +304,7 @@ const animalPopulationData = {
     mealworm: { population: 27.8e9, category: "domestic", name: "🐛 Farmed mealworm", moralWeightKey: "insect" },
     "soldier-fly": { population: 11.4e9, category: "domestic", name: "🪰 Farmed black soldier fly", moralWeightKey: "insect" },
     bee: { population: 2.87e12, category: "domestic", name: "🐝 Managed honey bee", moralWeightKey: "bee" },
-    cochineal: { population: 2.1e11, category: "domestic", name: "🪲 Farmed cochineal", moralWeightKey: "insect" },
+    cochineal: { population: 4.1e10, category: "domestic", name: "🪲 Farmed cochineal", moralWeightKey: "insect" },
     "farmed-insect": { population: 8.485e9, category: "domestic", name: "🦗 Other farmed insect", moralWeightKey: "insect" },
 
     // Wild animals
