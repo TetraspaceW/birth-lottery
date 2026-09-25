@@ -33,7 +33,7 @@
   <body>
     <div class="container">
       <h1>The Birth Lottery</h1>
-      <em>Last updated 2026-09-15</em>
+      <em>Last updated 2026-09-24</em>
       <p>
         You didn't choose the circumstances of your birth; even if it couldn't
         have been any other way, it was something outside of your control. I
@@ -241,7 +241,7 @@
             does corporate and institutional outreach in south America and
             southeast Asia, getting corporations to make cage-free commitments
             for egg-laying hens, to get institutions to provide plant-based
-            meals in Argentina, Columbia and Indonesia, and to get pork
+            meals in Argentina, Colombia and Indonesia, and to get pork
             producers in Brazil to give sows more space and to treat piglets
             better.
           </p>
@@ -272,9 +272,9 @@
       </ul>
       <h3>Global Health and Development</h3>
       <p>
-        <a href="https://www.givewell.org/">Givewell</a> evaluates charities
+        <a href="https://www.givewell.org/">GiveWell</a> evaluates charities
         that help humans living today. All else equal, it's more effective to
-        help people who are living in developing countries; Givewell estimates
+        help people who are living in developing countries; GiveWell estimates
         that, on average, an extra $3500 spent correctly in developing countries
         can do the equivalent of saving a life (specifically from vitamin A
         supplementation reducing the rate of death from infections caused by
@@ -292,9 +292,9 @@
             >
             gives out malaria medicine. In some countries, especially in
             subsaharan Africa, malaria is highly seasonal - most cases of
-            malaria happen during the summer. Malaria Consortium focuses on
-            giving out malaria medicine during these four months, where it has
-            the greatest impact.
+            malaria happen during the rainy season. Malaria Consortium focuses
+            on giving out malaria medicine monthly during the four or five
+            months of the peak season, where it has the greatest impact.
           </p>
         </li>
         <li>
@@ -312,7 +312,7 @@
           <p>
             <a
               href="https://www.givewell.org/charities/helen-keller-international"
-              >Hellen Keller International</a
+              >Helen Keller Intl</a
             >
             distributes Vitamin A supplements for preschool aged children in
             Africa, reducing Vitamin A deficiency which makes people vulnerable
@@ -382,7 +382,19 @@
                 >Global cochineal production: scale, welfare concerns, and
                 potential interventions</a
               >
-              for the number of farmed cochineals.
+              for the number of farmed cochineals. It counts the adult females
+              killed each year (4 to 18 billion); to get the number alive at
+              once, I added their offspring using the roughly 430 eggs a female
+              lays, a third of them male, from
+              <a href="https://doi.org/10.1093/jipm/pmaf033"
+                >Schowalter's review of cochineal insects</a
+              >. With a stable population, only about one daughter and half a
+              son per mother survive to adulthood, so I assumed the rest die as
+              crawlers within 3 to 5 days (the report's time to starvation). I
+              weighted each group by how long it lives: 70 to 90 days for adult
+              females (from the report) and 43 to 67 days for males to reach
+              adulthood (from the review). That gives about 40 billion, most of
+              them crawlers in their first few days.
             </p>
           </li>
           <li>
@@ -397,17 +409,27 @@
           <li>
             <p>
               <a
-                href="https://www.sentienceinstitute.org/global-animal-farming-estimates"
-                >Sentience Institute's Global Farmed & Factory Farmed Animals
-                Estimates</a
+                href="https://forum.effectivealtruism.org/posts/Rw3iXiJ4Fw4ePu4t6/forecasting-farmed-animal-numbers-in-2033"
+                >Rethink Priorities' Forecasting farmed animal numbers in
+                2033</a
               >
-              for the number of farmed fish and vertebrates.
+              for the number of farmed fish alive at any time (2022 estimate).
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://www.fao.org/faostat/en/#data/QCL"
+                >FAOSTAT's live animal stocks</a
+              >
+              for 2024 for the number of farmed land vertebrates. Farmed
+              egg-laying chickens are FAO's count of laying hens, and other
+              farmed chickens are all chickens minus laying hens.
             </p>
           </li>
           <li>
             <p>
               <a
-                href="en.m.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population"
+                href="https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population"
                 >Wikipedia's list of countries and dependencies by population</a
               >
               for the human population of each country.
@@ -421,8 +443,9 @@
               >
               for Rethink Priorities' moral weights. "Pigs" was used as the
               value for all mammals, "chickens" was used as the value for all
-              birds, "salmon" was used as the value for all fish, and "black
-              soldier flies" was used as the number for all insects and shrimps,
+              birds, "salmon" was used as the value for all fish, "shrimp" was
+              used for shrimps, "bees" was used for honey bees, and "black
+              soldier flies" was used as the number for all other insects,
               except for springtails and mites which have significantly smaller
               brains for which I used "silkworm". I also used the silkworm value
               for pteropods, and used zero for copepods which have significantly
@@ -432,36 +455,44 @@
           <li>
             <p>
               Sensory-associative neuron counts for humans, dogs, cats, rabbits,
-              ducks, geese, and turkeys were obtained from
+              chickens, ducks, geese, and turkeys were obtained from
               <a
                 href="https://en.wikipedia.org/wiki/List_of_animals_by_number_of_neurons#Forebrain_(cerebrum_or_pallium)_only"
                 >Wikipedia's list of animals by number of neurons</a
-              >. I got a language model to read
+              >. For pigs I used the cerebral cortex count from
               <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4228855/"
                 >Cellular scaling rules for the brain of Artiodactyla include a
                 highly folded cortex with few neurons</a
-              >
-              for pigs, cows, sheep, goats, and buffalo, and used the numbers it
-              gave me without checking them. I used the value for the house
-              cricket for all insects. I used the value of the common starling
-              for all wild birds. For shrimp, I divided the total neuron count
-              for humans by a million then used a tenth of that for the mushroom
-              body or whatever shrimps have, proportional to the uncited(?)
-              neuron count in Rethink Priorities'
+              >. That paper doesn't cover cows, sheep, or goats, so I fitted
+              cortical neurons against brain mass across its five species (about
+              11.85 million × brain mass in grams<sup>0.764</sup>) and applied
+              that to brain masses from
+              <a href="https://doi.org/10.1371/journal.pone.0154580"
+                >The Brain of the Domestic Bos taurus</a
+              >: 481 g for cows, 131 g for sheep, and 124 g for goats. I used
+              the cow value for buffalo. I used the value for the house cricket
+              for all insects. I used the value of the common starling for all
+              wild birds. For shrimp, I divided the total neuron count for
+              humans by a million then used a tenth of that for the mushroom
+              body or whatever shrimps have, proportional to the neuron count
+              used in Vasco Grilo's
               <a
                 href="https://forum.effectivealtruism.org/posts/ehrmin93mzseQMj82/total-number-of-neurons-and-welfare-of-animal-populations"
-                >Welfare Range and Probability of Sentience Distributions</a
-              >. For fish, I randomly guess that pallial neurons are about 10%
-              of the total brain, and that an adult zebrafish's neuron count is
-              similar to that of the most common fish taxon, lanternfish (both
-              being a few cm long), the total neuron count of which I got from
+                >Total number of neurons and welfare of animal populations</a
+              >, which takes it from Table 5 of Rethink Priorities' welfare
+              range report. For fish, I randomly guess that pallial neurons are
+              about 10% of the total brain, and that an adult zebrafish's neuron
+              count is similar to that of the most numerous fish, bristlemouths
+              (both being a few cm long), the total neuron count of which (5
+              million) I got from
               <a
                 href="https://eukaryotewritesblog.com/how-many-neurons-are-there/"
                 >How many neurons are there?</a
-              >. For insects, I randomly guessed that about a tenth of the
-              neurons are in the mushroom bodies (which I am not allowed to do,
-              because it varies significantly by taxon), used 100,000 as the
-              total number of neurons for termites from
+              >, which also estimates 728 neurons for an adult copepod, of which
+              I used a tenth. For insects, I randomly guessed that about a tenth
+              of the neurons are in the mushroom bodies (which I am not allowed
+              to do, because it varies significantly by taxon), used 100,000 as
+              the total number of neurons for termites from
               <a
                 href="https://www.pestofix.com/blog/inside-a-termites-brain-how-they-navigate-communicate-and-rebuild-faster-than-you-think.php"
                 >Inside a Termite’s Brain: How They Navigate, Communicate, and
@@ -489,8 +520,8 @@
               <a
                 href="https://forum.effectivealtruism.org/posts/ehrmin93mzseQMj82/total-number-of-neurons-and-welfare-of-animal-populations"
                 >Total number of neurons and welfare of animal populations</a
-              >. For wild terrestrial arthropods, I use soil populations
-              estimated in
+              >. For wild terrestrial arthropods, I use soil and leaf litter
+              populations estimated in
               <a href="https://www.science.org/doi/10.1126/sciadv.abq4049">
                 Rosenberg et al., The global biomass and number of terrestrial
                 arthropods</a
@@ -499,20 +530,26 @@
                 the authors' zenodo notebook</a
               >. For specific taxa of wild mammals I asked a language model and
               used its guesses. For wild shrimps I randomly guessed that shrimps
-              caught by humans represent about a tenth of all shrimps. For wild
-              mammals I assumed that small mammals were about the same size as
-              small birds and used the relative biomass of mammals compared to
-              birds. For wild nematodes I split soil and marine nematodes into
-              separate entries: soil nematodes from
+              caught by humans (about 25 trillion a year, per the shrimp report
+              above) represent about a tenth of all shrimps. For wild mammals I
+              assumed that small mammals were about the same size as small birds
+              and used the relative biomass of mammals compared to birds. For
+              wild nematodes I split soil and marine nematodes into separate
+              entries: topsoil nematodes from
               <a href="https://www.nature.com/articles/s41586-019-1418-6">
-                Soil nematode abundance and functional group composition at a
-                global scale</a
+                van den Hoogen et al., Soil nematode abundance and functional
+                group composition at a global scale</a
               >, and marine nematodes from
               <a
                 href="https://eukaryotewritesblog.com/how-many-neurons-are-there/"
               >
                 Ray's estimate from 128 benthic studies</a
-              >.
+              >, which uses depth trends from
+              <a href="https://doi.org/10.3354/meps317001">
+                Rex et al., Global bathymetric patterns of standing stock and
+                body size in the deep-sea benthos</a
+              >. Ray's figure counts all seafloor meiofauna, which are mostly
+              but not entirely nematodes.
             </p>
           </li>
         </ul>
